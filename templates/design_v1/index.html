@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dojo Kazoku — Karate Shotokan Ken Shin Kan</title>
+<meta name="description" content="Dojo de Karate Shotokan estilo Ken Shin Kan. Forjamos carácter, salud y confianza para niños, jóvenes y adultos." />
+<style>
+  :root{
+    --rojo:#E63946;
+    --rojo-osc:#B5202C;
+    --amarillo:#FFD23F;
+    --azul:#1D3557;
+    --azul-claro:#457B9D;
+    --crema:#FFF8F0;
+    --tinta:#1A1A2E;
+    --gris:#5C6473;
+    --sombra:0 10px 30px rgba(29,53,87,.12);
+    --radio:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.6;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,248,240,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:3px solid var(--rojo);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:.7rem 1.2rem;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;align-items:center;gap:.7rem;font-weight:800;color:var(--azul)}
+  .logo img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--amarillo)}
+  .logo span{font-size:1.15rem;letter-spacing:.5px}
+  nav ul{display:flex;gap:1.6rem;list-style:none}
+  nav a{font-weight:600;color:var(--azul);transition:color .2s}
+  nav a:hover{color:var(--rojo)}
+  .btn{
+    display:inline-block;padding:.85rem 1.6rem;border-radius:999px;
+    background:var(--rojo);color:#fff;font-weight:700;
+    box-shadow:var(--sombra);transition:transform .15s, background .2s;
+    border:none;cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--rojo-osc)}
+  .btn-amarillo{background:var(--amarillo);color:var(--azul)}
+  .btn-amarillo:hover{background:#f5c000}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;color:var(--azul);cursor:pointer}
+
+  .hero{
+    position:relative;min-height:90vh;display:flex;align-items:center;
+    background:
+      linear-gradient(135deg, rgba(29,53,87,.85), rgba(230,57,70,.7)),
+      url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1600') center/cover;
+    color:#fff;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:80px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'><path fill='%23FFF8F0' d='M0,40 C300,90 900,0 1200,40 L1200,80 L0,80 Z'/></svg>") center/cover;
+  }
+  .hero-grid{
+    max-width:1200px;margin:0 auto;padding:5rem 1.2rem;
+    display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.1;
+    margin-bottom:1.2rem;
+  }
+  .hero h1 em{color:var(--amarillo);font-style:normal}
+  .hero p.lead{font-size:1.2rem;margin-bottom:2rem;opacity:.95}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero-img{
+    border-radius:var(--radio);overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,.4);
+    transform:rotate(2deg);
+  }
+  .hero-img img{aspect-ratio:4/5;object-fit:cover;width:100%}
+  .badges{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+  .badge{
+    background:rgba(255,255,255,.15);backdrop-filter:blur(8px);
+    padding:.5rem 1rem;border-radius:999px;font-size:.9rem;font-weight:600;
+    border:1px solid rgba(255,255,255,.3);
+  }
+
+  section{padding:5rem 1.2rem}
+  .container{max-width:1200px;margin:0 auto}
+  h2.title{
+    font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;
+    text-align:center;margin-bottom:.5rem;color:var(--azul);
+  }
+  h2.title span{color:var(--rojo)}
+  .subtitle{text-align:center;color:var(--gris);margin-bottom:3rem;font-size:1.05rem}
+
+  .beneficios{background:#fff}
+  .grid-ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+  .card-ben{
+    background:var(--crema);padding:2rem 1.5rem;border-radius:var(--radio);
+    text-align:center;transition:transform .25s, box-shadow .25s;
+    border-top:5px solid var(--amarillo);
+  }
+  .card-ben:nth-child(2n){border-top-color:var(--rojo)}
+  .card-ben:nth-child(3n){border-top-color:var(--azul-claro)}
+  .card-ben:hover{transform:translateY(-6px);box-shadow:var(--sombra)}
+  .icono{
+    width:64px;height:64px;border-radius:50%;
+    background:var(--azul);color:#fff;display:grid;place-items:center;
+    font-size:1.8rem;margin:0 auto 1rem;
+  }
+  .card-ben:nth-child(2n) .icono{background:var(--rojo)}
+  .card-ben:nth-child(3n) .icono{background:var(--amarillo);color:var(--azul)}
+  .card-ben h3{margin-bottom:.6rem;color:var(--azul)}
+
+  .segmentos{background:linear-gradient(135deg,var(--azul) 0%,var(--azul-claro) 100%);color:#fff}
+  .segmentos h2.title{color:#fff}
+  .segmentos h2.title span{color:var(--amarillo)}
+  .segmentos .subtitle{color:rgba(255,255,255,.85)}
+  .grid-seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .card-seg{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+    padding:2rem;border-radius:var(--radio);backdrop-filter:blur(8px);
+  }
+  .card-seg .emoji{font-size:2.5rem;margin-bottom:.8rem}
+  .card-seg h3{color:var(--amarillo);margin-bottom:.5rem}
+
+  .testimonios{background:#fff}
+  .grid-test{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .card-test{
+    background:var(--crema);padding:2rem;border-radius:var(--radio);
+    position:relative;border-left:5px solid var(--rojo);
+  }
+  .card-test::before{
+    content:"\201C";position:absolute;top:-10px;left:20px;
+    font-size:5rem;color:var(--amarillo);font-family:Georgia,serif;line-height:1;
+  }
+  .card-test p{font-style:italic;margin:1.5rem 0 1rem;color:#333}
+  .autor{display:flex;align-items:center;gap:.8rem;margin-top:1rem}
+  .avatar{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--azul-claro);color:#fff;display:grid;place-items:center;font-weight:700;
+  }
+  .autor strong{display:block;color:var(--azul)}
+  .autor small{color:var(--gris)}
+  .estrellas{color:var(--amarillo);font-size:1.1rem;letter-spacing:2px}
+
+  .blog{background:var(--crema)}
+  .grid-blog{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+  .card-blog{
+    background:#fff;border-radius:var(--radio);overflow:hidden;
+    box-shadow:0 6px 20px rgba(29,53,87,.08);transition:transform .25s;
+  }
+  .card-blog:hover{transform:translateY(-6px)}
+  .card-blog-img{aspect-ratio:16/10;background:linear-gradient(45deg,var(--azul),var(--rojo));position:relative}
+  .card-blog-img span{
+    position:absolute;top:1rem;left:1rem;background:var(--amarillo);color:var(--azul);
+    padding:.3rem .8rem;border-radius:999px;font-size:.8rem;font-weight:700;
+  }
+  .card-blog-body{padding:1.5rem}
+  .card-blog-body h3{color:var(--azul);margin-bottom:.6rem;font-size:1.2rem}
+  .card-blog-body p{color:var(--gris);font-size:.95rem;margin-bottom:1rem}
+  .leer{color:var(--rojo);font-weight:700}
+
+  .galeria{background:#fff}
+  .filtros{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+  .filtro{
+    padding:.5rem 1.2rem;border-radius:999px;border:2px solid var(--azul);
+    background:transparent;color:var(--azul);font-weight:600;cursor:pointer;transition:all .2s;
+  }
+  .filtro:hover,.filtro.activo{background:var(--azul);color:#fff}
+  .grid-gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+  .gal-item{
+    aspect-ratio:1;border-radius:var(--radio);overflow:hidden;
+    background:linear-gradient(135deg,var(--azul-claro),var(--rojo));
+    position:relative;cursor:pointer;
+  }
+  .gal-item::after{
+    content:attr(data-cat);position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.7));
+    color:#fff;padding:1rem;font-weight:600;
+  }
+
+  .cta{background:linear-gradient(135deg,var(--rojo),var(--rojo-osc));color:#fff;text-align:center}
+  .cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:1rem}
+  .cta p{font-size:1.15rem;margin-bottom:2rem;opacity:.95;max-width:640px;margin-inline:auto}
+  .form-rapido{
+    max-width:520px;margin:0 auto;display:grid;gap:.8rem;
+    background:rgba(255,255,255,.1);padding:2rem;border-radius:var(--radio);
+    border:1px solid rgba(255,255,255,.2);
+  }
+  .form-rapido input,.form-rapido select{
+    padding:.9rem 1rem;border-radius:10px;border:none;font-size:1rem;font-family:inherit;
+  }
+  .form-rapido .btn{background:var(--amarillo);color:var(--azul);font-size:1.1rem}
+  .form-rapido .btn:hover{background:#fff}
+
+  footer{background:var(--azul);color:#fff;padding:3rem 1.2rem 1.5rem}
+  .foot-grid{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:2rem;margin-bottom:2rem;
+  }
+  .foot-grid h4{color:var(--amarillo);margin-bottom:1rem}
+  .foot-grid a{display:block;padding:.3rem 0;opacity:.85;transition:opacity .2s}
+  .foot-grid a:hover{opacity:1;color:var(--amarillo)}
+  .copy{text-align:center;border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem;opacity:.7;font-size:.9rem}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero-ctas{justify-content:center}
+    .badges{justify-content:center}
+    nav ul{display:none}
+    .menu-toggle{display:block}
+    nav.abierto ul{
+      display:flex;position:absolute;top:100%;left:0;right:0;
+      background:#fff;flex-direction:column;padding:1rem;gap:.5rem;
+      box-shadow:var(--sombra);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="kazoku.jpg" alt="Dojo Kazoku" />
+      <span>Dojo Kazoku<br><small style="font-weight:400;color:var(--rojo)">Karate Shotokan KSK</small></span>
+    </a>
+    <nav id="navMenu">
+      <ul>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#segmentos">Para ti</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="#contacto" class="btn">Clase Gratis</a>
+    <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="badges">
+        <span class="badge">⛩ Estilo Ken Shin Kan</span>
+        <span class="badge">🥋 +20 años de tradición</span>
+      </div>
+      <h1 style="margin-top:1.5rem">Forja tu <em>carácter</em>, <br>cultiva tu <em>bienestar</em>.</h1>
+      <p class="lead">El karate no es solo defensa personal: es una inversión en disciplina, confianza y salud para toda la vida. Bienvenido a la familia Kazoku.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn">🥋 Reserva tu clase de prueba GRATIS</a>
+        <a href="#beneficios" class="btn btn-amarillo">Conocer más</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=900" alt="Estudiante de karate sonriendo" />
+    </div>
+  </div>
+</section>
+
+<section id="beneficios" class="beneficios">
+  <div class="container">
+    <h2 class="title">Beneficios que <span>transforman vidas</span></h2>
+    <p class="subtitle">Más que técnica: una formación integral para cuerpo, mente y espíritu</p>
+    <div class="grid-ben">
+      <div class="card-ben"><div class="icono">💪</div><h3>Salud Física</h3><p>Fuerza, flexibilidad y resistencia en cada entrenamiento.</p></div>
+      <div class="card-ben"><div class="icono">🧠</div><h3>Salud Mental</h3><p>Reduce el estrés y mejora la concentración.</p></div>
+      <div class="card-ben"><div class="icono">⭐</div><h3>Confianza</h3><p>Cada cinturón es una victoria personal que se nota.</p></div>
+      <div class="card-ben"><div class="icono">🎯</div><h3>Disciplina</h3><p>Hábitos que se trasladan al colegio, trabajo y hogar.</p></div>
+      <div class="card-ben"><div class="icono">🤝</div><h3>Comunidad</h3><p>Una familia (kazoku) que te apoya en cada paso.</p></div>
+      <div class="card-ben"><div class="icono">🛡️</div><h3>Defensa Personal</h3><p>Herramientas reales para sentirte seguro.</p></div>
+      <div class="card-ben"><div class="icono">🌸</div><h3>Perfección del Carácter</h3><p>La esencia del karate: ser mejor cada día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="segmentos" class="segmentos">
+  <div class="container">
+    <h2 class="title">Karate para <span>toda la familia</span></h2>
+    <p class="subtitle">Programas diseñados para cada etapa de la vida</p>
+    <div class="grid-seg">
+      <div class="card-seg"><div class="emoji">🧒</div><h3>Niños (5-12 años)</h3><p>Disciplina divertida, valores y confianza. Mejora el rendimiento escolar y previene el bullying.</p></div>
+      <div class="card-seg"><div class="emoji">🧑</div><h3>Adolescentes y Adultos</h3><p>Fitness funcional, manejo del estrés y un entrenamiento que desafía cuerpo y mente.</p></div>
+      <div class="card-seg"><div class="emoji">🥷</div><h3>Defensa Personal</h3><p>Programa intensivo enfocado en situaciones reales para profesionales y mujeres.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios" class="testimonios">
+  <div class="container">
+    <h2 class="title">Lo que dice <span>nuestra familia</span></h2>
+    <p class="subtitle">Historias reales de transformación</p>
+    <div class="grid-test">
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>Mi hijo cambió desde que entrena en Kazoku. Es más responsable, seguro y respetuoso. ¡La mejor decisión!</p>
+        <div class="autor"><div class="avatar">CM</div><div><strong>Carolina M.</strong><small>Mamá de alumno, 8 años</small></div></div>
+      </div>
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>Llegué buscando bajar el estrés y encontré una disciplina que me cambió la vida. El sensei es excepcional.</p>
+        <div class="autor"><div class="avatar">RF</div><div><strong>Rodrigo F.</strong><small>Alumno adulto, cinturón verde</small></div></div>
+      </div>
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>Ambiente limpio, profesional y muy familiar. Mis dos hijas adoran venir a sus clases.</p>
+        <div class="autor"><div class="avatar">PS</div><div><strong>Paula S.</strong><small>Mamá de alumnas</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="blog">
+  <div class="container">
+    <h2 class="title">Blog del <span>Sensei</span></h2>
+    <p class="subtitle">Conocimiento, tradición y autoridad</p>
+    <div class="grid-blog">
+      <article class="card-blog">
+        <div class="card-blog-img" style="background:linear-gradient(45deg,#1D3557,#457B9D)"><span>Entrenamiento</span></div>
+        <div class="card-blog-body"><h3>La estructura de una clase de 60 minutos</h3><p>Desde el calentamiento hasta la vuelta a la calma: cómo aprovechar cada segundo del entrenamiento.</p><a class="leer" href="#">Leer artículo →</a></div>
+      </article>
+      <article class="card-blog">
+        <div class="card-blog-img" style="background:linear-gradient(45deg,#E63946,#FFD23F)"><span>Vocabulario</span></div>
+        <div class="card-blog-body"><h3>Kihon, Kata y Kumite: guía básica</h3><p>Los tres pilares técnicos del karate Shotokan explicados de manera sencilla.</p><a class="leer" href="#">Leer artículo →</a></div>
+      </article>
+      <article class="card-blog">
+        <div class="card-blog-img" style="background:linear-gradient(45deg,#457B9D,#E63946)"><span>Linaje</span></div>
+        <div class="card-blog-body"><h3>Maestro Seiichi Akamine</h3><p>La reseña biográfica del fundador del estilo Ken Shin Kan y el linaje de nuestra escuela.</p><a class="leer" href="#">Leer artículo →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="galeria">
+  <div class="container">
+    <h2 class="title">Nuestra <span>galería</span></h2>
+    <p class="subtitle">Un dojo limpio, ordenado y profesional</p>
+    <div class="filtros">
+      <button class="filtro activo" onclick="filtrar(this,'todo')">Todo</button>
+      <button class="filtro" onclick="filtrar(this,'seminarios')">Seminarios</button>
+      <button class="filtro" onclick="filtrar(this,'torneos')">Torneos KSK</button>
+      <button class="filtro" onclick="filtrar(this,'ninos')">Clases de niños</button>
+      <button class="filtro" onclick="filtrar(this,'instalaciones')">Instalaciones</button>
+    </div>
+    <div class="grid-gal">
+      <div class="gal-item" data-cat="Seminarios" data-tipo="seminarios"></div>
+      <div class="gal-item" data-cat="Torneos KSK" data-tipo="torneos" style="background:linear-gradient(135deg,#E63946,#FFD23F)"></div>
+      <div class="gal-item" data-cat="Niños" data-tipo="ninos" style="background:linear-gradient(135deg,#FFD23F,#457B9D)"></div>
+      <div class="gal-item" data-cat="Instalaciones" data-tipo="instalaciones" style="background:linear-gradient(135deg,#1D3557,#E63946)"></div>
+      <div class="gal-item" data-cat="Seminarios" data-tipo="seminarios" style="background:linear-gradient(135deg,#457B9D,#FFD23F)"></div>
+      <div class="gal-item" data-cat="Niños" data-tipo="ninos" style="background:linear-gradient(135deg,#E63946,#1D3557)"></div>
+      <div class="gal-item" data-cat="Torneos KSK" data-tipo="torneos" style="background:linear-gradient(135deg,#FFD23F,#E63946)"></div>
+      <div class="gal-item" data-cat="Instalaciones" data-tipo="instalaciones" style="background:linear-gradient(135deg,#1D3557,#457B9D)"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="cta">
+  <div class="container">
+    <h2>¿Listo para empezar?</h2>
+    <p>Reserva tu clase de prueba <strong>GRATIS</strong>. Sin compromiso. Solo trae ropa cómoda y muchas ganas.</p>
+    <form class="form-rapido" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+      <input type="text" placeholder="Nombre completo" required />
+      <input type="tel" placeholder="Teléfono / WhatsApp" required />
+      <input type="email" placeholder="Correo electrónico" required />
+      <select required>
+        <option value="">¿Para quién es la clase?</option>
+        <option>Niño/a (5-12)</option>
+        <option>Adolescente</option>
+        <option>Adulto</option>
+        <option>Defensa personal</option>
+      </select>
+      <button type="submit" class="btn">Reservar mi clase gratis 🥋</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="logo" style="color:#fff;margin-bottom:1rem">
+        <img src="kazoku.jpg" alt="" />
+        <span>Dojo Kazoku</span>
+      </div>
+      <p style="opacity:.8;font-size:.95rem">Karate Shotokan estilo Ken Shin Kan. Forjando carácter desde el primer kiai.</p>
+    </div>
+    <div>
+      <h4>Enlaces</h4>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#blog">Blog</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div>
+      <h4>Horarios</h4>
+      <a>Lun a Vie: 17:00 – 21:00</a>
+      <a>Sábados: 10:00 – 13:00</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a>📍 Dirección del dojo</a>
+      <a>📱 +56 9 0000 0000</a>
+      <a>✉ info@dojokazoku.cl</a>
+    </div>
+  </div>
+  <p class="copy">© 2026 Dojo Kazoku — Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  function filtrar(btn, tipo){
+    document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));
+    btn.classList.add('activo');
+    document.querySelectorAll('.gal-item').forEach(it=>{
+      it.style.display = (tipo==='todo' || it.dataset.tipo===tipo) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
