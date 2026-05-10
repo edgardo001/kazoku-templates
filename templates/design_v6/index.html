@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dojo Kazoku · Ken Shin Kan — Karate-Do en La Granja</title>
+<meta name="description" content="Karate Ken Shin Kan en La Granja. Tigre y águila. Sensei Akamine. Forjamos el espíritu fuerte." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece4d3;
+    --paper-2:#e2d8c2;
+    --paper-3:#d6cab1;
+    --bone:#f5efe2;
+    --ink:#0f0e0c;
+    --ink-2:#1a1916;
+    --ink-soft:#56524a;
+    --red:#a80006;
+    --red-bright:#e8120c;
+    --riso:#1c2a6b;
+    --riso-2:#324aa8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Familjen Grotesk',system-ui,sans-serif;
+    font-size:16px;line-height:1.55;color:var(--ink);background:var(--paper);
+    overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:var(--bone)}
+
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"opsz" 96;font-weight:600;line-height:.9;letter-spacing:-0.04em}
+  .mono{font-family:'JetBrains Mono',monospace;font-feature-settings:"ss01" 1}
+  .kanji{font-family:'Shippori Mincho',serif;font-weight:500}
+
+  /* ---------- HALFTONE TEXTURES ---------- */
+  .halftone-red{
+    background-image:radial-gradient(circle at center, var(--red) 0.8px, transparent 1.2px);
+    background-size:5px 5px;
+  }
+  .halftone-ink{
+    background-image:radial-gradient(circle at center, var(--ink) 0.8px, transparent 1.2px);
+    background-size:5px 5px;
+  }
+
+  /* ---------- TOP STRIP (mono ticker) ---------- */
+  .strip{
+    background:var(--ink);color:var(--paper);padding:8px 0;overflow:hidden;
+    border-bottom:2px solid var(--red);
+  }
+  .strip-track{
+    display:flex;gap:48px;white-space:nowrap;animation:slide 50s linear infinite;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .strip-track span{display:inline-flex;align-items:center;gap:14px;font-weight:500}
+  .strip-track .sep{color:var(--red)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;background:var(--paper);
+    border-bottom:1px solid var(--ink);
+  }
+  .nav-inner{
+    max-width:1400px;margin:0 auto;padding:14px 28px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;
+  }
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{
+    width:46px;height:46px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--ink);background:var(--bone);
+  }
+  .logo .text{display:flex;flex-direction:column;line-height:1}
+  .logo .text strong{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.015em}
+  .logo .text small{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-top:3px;font-weight:500}
+  nav.menu{justify-self:center}
+  nav.menu ul{display:flex;gap:2px;list-style:none}
+  nav.menu a{
+    padding:9px 14px;font-size:.85rem;color:var(--ink);font-weight:500;
+    border-radius:0;position:relative;transition:color .2s;
+  }
+  nav.menu a:hover{color:var(--red)}
+  nav.menu a:hover::before{content:"[";position:absolute;left:4px;color:var(--red);font-family:'JetBrains Mono',monospace}
+  nav.menu a:hover::after{content:"]";position:absolute;right:4px;color:var(--red);font-family:'JetBrains Mono',monospace}
+  .menu-toggle{display:none;background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 22px;font-size:.85rem;font-weight:600;letter-spacing:.02em;
+    font-family:'Familjen Grotesk',sans-serif;
+    border:1px solid var(--ink);cursor:pointer;background:var(--paper);color:var(--ink);
+    transition:background .25s, color .25s;border-radius:0;
+  }
+  .btn .arr{transition:transform .25s;display:inline-block}
+  .btn:hover{background:var(--ink);color:var(--paper)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-red{background:var(--red);color:var(--bone);border-color:var(--red)}
+  .btn-red:hover{background:var(--ink);border-color:var(--ink);color:var(--bone)}
+  .btn-ink{background:var(--ink);color:var(--bone)}
+  .btn-ink:hover{background:var(--red);border-color:var(--red)}
+
+  /* ---------- BENTO HERO ---------- */
+  .hero{
+    padding:18px;border-bottom:1px solid var(--ink);
+    background:var(--paper);position:relative;
+  }
+  .bento{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:14px;
+  }
+  .cell{
+    border:1px solid var(--ink);background:var(--bone);position:relative;
+    overflow:hidden;padding:24px;
+    transition:background .25s;
+  }
+  .cell-pin{
+    position:absolute;top:8px;right:10px;
+    font-family:'JetBrains Mono',monospace;font-size:.62rem;
+    letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase;
+  }
+  .corner{position:absolute;width:14px;height:14px;color:var(--red);pointer-events:none}
+  .corner.tl{top:6px;left:6px;border-top:2px solid currentColor;border-left:2px solid currentColor}
+  .corner.tr{top:6px;right:6px;border-top:2px solid currentColor;border-right:2px solid currentColor}
+  .corner.bl{bottom:6px;left:6px;border-bottom:2px solid currentColor;border-left:2px solid currentColor}
+  .corner.br{bottom:6px;right:6px;border-bottom:2px solid currentColor;border-right:2px solid currentColor}
+
+  /* Hero title cell */
+  .c-title{
+    grid-column:span 8;grid-row:span 2;
+    padding:48px 48px 36px;
+    background:var(--bone);
+    display:flex;flex-direction:column;justify-content:space-between;min-height:520px;
+    position:relative;
+  }
+  .c-title h1{
+    font-size:clamp(3.4rem,9vw,8.4rem);
+    color:var(--ink);
+  }
+  .c-title h1 .red{color:var(--red);font-style:italic;font-weight:300}
+  .c-title h1 .strike{position:relative;display:inline-block}
+  .c-title h1 .strike::after{
+    content:"";position:absolute;left:-2%;right:-2%;top:55%;height:8px;background:var(--red);
+    transform:rotate(-2deg);
+  }
+  .c-title .meta{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+    margin-top:32px;padding-top:24px;border-top:1px solid var(--ink);
+  }
+  .c-title .meta .lead{
+    font-size:1.05rem;color:var(--ink-soft);max-width:46ch;
+  }
+  .c-title .meta .stamps{
+    display:flex;gap:8px;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .stamp{
+    border:1px solid var(--ink);padding:5px 10px;background:var(--paper);
+    transition:background .2s;
+  }
+  .stamp.red{background:var(--red);color:var(--bone);border-color:var(--red)}
+
+  /* Photo cell */
+  .c-photo{
+    grid-column:span 4;grid-row:span 2;
+    padding:0;background:var(--ink);min-height:520px;
+    position:relative;overflow:hidden;
+  }
+  .c-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(100%) contrast(1.1);
+    mix-blend-mode:luminosity;opacity:.95;
+  }
+  .c-photo::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at center, transparent 0.5px, rgba(168,0,6,.55) 1.4px),
+      linear-gradient(180deg, transparent, rgba(15,14,12,.4));
+    background-size:5px 5px, 100% 100%;
+    mix-blend-mode:multiply;
+  }
+  .c-photo .overlay-text{
+    position:absolute;bottom:18px;left:18px;right:18px;z-index:2;
+    color:var(--bone);
+  }
+  .c-photo .overlay-text .ja{font-family:'Shippori Mincho',serif;font-size:2.2rem;line-height:1;color:var(--bone);display:block;margin-bottom:6px}
+  .c-photo .overlay-text .label{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--bone);opacity:.75;
+  }
+  .c-photo .badge{
+    position:absolute;top:18px;right:18px;z-index:2;
+    background:var(--red);color:var(--bone);
+    padding:6px 11px;font-family:'JetBrains Mono',monospace;
+    font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  }
+
+  /* Quote cell */
+  .c-quote{
+    grid-column:span 5;
+    background:var(--ink);color:var(--paper);
+    padding:32px;
+  }
+  .c-quote .label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red-bright);margin-bottom:16px;display:block}
+  .c-quote blockquote{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:400;font-style:italic;
+    font-size:1.4rem;line-height:1.25;letter-spacing:-.015em;color:var(--paper);
+  }
+  .c-quote cite{display:block;margin-top:14px;font-size:.78rem;color:rgba(236,228,211,.6);font-style:normal;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+
+  /* Stats trio */
+  .c-stat{
+    grid-column:span 2;
+    padding:28px 22px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    min-height:160px;
+  }
+  .c-stat .label{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .c-stat .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:3.4rem;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+  .c-stat .num .small{font-size:1.2rem;color:var(--red);vertical-align:top;font-weight:400}
+  .c-stat:hover{background:var(--red);color:var(--bone)}
+  .c-stat:hover .label,.c-stat:hover .num,.c-stat:hover .num .small{color:var(--bone)}
+
+  /* CTA cell */
+  .c-cta{
+    grid-column:span 3;background:var(--red);color:var(--bone);
+    padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+    transition:background .25s;
+  }
+  .c-cta:hover{background:var(--ink)}
+  .c-cta .label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase}
+  .c-cta strong{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.65rem;letter-spacing:-.02em;line-height:1.05;display:block}
+  .c-cta .arr{font-size:1.6rem;align-self:flex-end;transition:transform .25s}
+  .c-cta:hover .arr{transform:translate(6px,-6px)}
+
+  /* ---------- INFO MARQUEE ---------- */
+  .info-bar{
+    background:var(--red);color:var(--bone);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:14px 0;overflow:hidden;
+  }
+  .info-track{
+    display:flex;gap:54px;white-space:nowrap;animation:slide 38s linear infinite;
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:500;
+    font-size:1.4rem;letter-spacing:-.02em;
+  }
+  .info-track .star{color:var(--bone);font-style:italic;opacity:.6}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:120px 28px;border-bottom:1px solid var(--ink);position:relative}
+  .container{max-width:1400px;margin:0 auto}
+  .head{
+    display:grid;grid-template-columns:auto 1fr 1fr;gap:48px;align-items:end;
+    margin-bottom:64px;
+  }
+  .head .num{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--red);font-weight:500;
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    border-left:1px solid var(--red);padding:0 0 8px 0;
+  }
+  .head h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+  .head h2 em{font-style:italic;color:var(--red);font-weight:300}
+  .head p.intro{color:var(--ink-soft);font-size:.98rem;max-width:38ch}
+
+  /* ---------- DUO TIGRE / ÁGUILA ---------- */
+  .duo{
+    display:grid;grid-template-columns:1fr 1fr;
+    border:1px solid var(--ink);background:var(--bone);
+  }
+  .duo-side{
+    padding:56px 44px;position:relative;
+    transition:background .35s;overflow:hidden;
+  }
+  .duo-side:first-child{border-right:1px solid var(--ink)}
+  .duo-side:hover{background:var(--paper-2)}
+  .duo-side .hero-kanji{
+    position:absolute;top:-30px;right:-20px;
+    font-family:'Shippori Mincho',serif;font-size:18rem;line-height:.85;
+    color:var(--ink);opacity:.06;pointer-events:none;
+  }
+  .duo-side .ribbon{
+    display:inline-flex;gap:8px;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:.65rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--red);
+    margin-bottom:20px;
+  }
+  .duo-side .ribbon::before{content:"●";color:var(--red)}
+  .duo-side h3{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:clamp(1.8rem,2.6vw,2.4rem);letter-spacing:-.02em;line-height:1.1;
+    margin-bottom:16px;
+  }
+  .duo-side h3 em{font-style:italic;color:var(--red);font-weight:300}
+  .duo-side p{color:var(--ink-soft);font-size:.98rem;max-width:46ch}
+  .duo-side dl{
+    margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:12px 20px;
+    border-top:1px solid var(--ink);padding-top:20px;font-size:.92rem;
+  }
+  .duo-side dt{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);align-self:center}
+  .duo-side dd{color:var(--ink);font-weight:500}
+
+  /* ---------- 4 PILARES ---------- */
+  .pilares{background:var(--ink);color:var(--paper)}
+  .pilares .head .num{color:var(--red-bright);border-color:var(--red-bright)}
+  .pilares .head h2{color:var(--paper)}
+  .pilares .head h2 em{color:var(--red-bright)}
+  .pilares .head p.intro{color:rgba(236,228,211,.65)}
+  .grid-pilares{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid rgba(236,228,211,.18);
+  }
+  .pilar{
+    padding:44px 26px 36px;
+    border-right:1px solid rgba(236,228,211,.18);
+    transition:background .3s;position:relative;overflow:hidden;
+  }
+  .pilar:last-child{border-right:0}
+  .pilar:hover{background:var(--red)}
+  .pilar:hover .ja{color:rgba(236,228,211,.18)}
+  .pilar .num{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(236,228,211,.5);
+    margin-bottom:36px;display:block;
+  }
+  .pilar .ja{
+    font-family:'Shippori Mincho',serif;font-size:3.6rem;line-height:1;
+    color:rgba(236,228,211,.25);transition:color .3s;
+    margin-bottom:18px;display:block;
+  }
+  .pilar h3{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:1.7rem;color:var(--paper);letter-spacing:-.015em;margin-bottom:10px;
+  }
+  .pilar p{color:rgba(236,228,211,.7);font-size:.92rem}
+
+  /* ---------- CLASE TIMELINE 60' ---------- */
+  .clase{background:var(--paper)}
+  .clase-bar{
+    margin-top:24px;display:flex;
+    border:1px solid var(--ink);background:var(--bone);
+    height:42px;
+    font-family:'JetBrains Mono',monospace;font-size:.65rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--bone);
+  }
+  .clase-bar .seg{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+    border-right:1px solid var(--ink);transition:filter .25s;
+  }
+  .clase-bar .seg:last-child{border-right:0}
+  .clase-bar .s1{background:#3a3935}
+  .clase-bar .s2{background:var(--red)}
+  .clase-bar .s3{background:var(--ink)}
+  .clase-bar .s4{background:#5a574e}
+  .clase-bar .seg:hover{filter:brightness(1.15)}
+
+  .timeline{
+    margin-top:36px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  }
+  .fase{
+    border:1px solid var(--ink);background:var(--bone);padding:32px 26px 28px;
+    position:relative;transition:transform .25s;
+  }
+  .fase:hover{transform:translateY(-4px)}
+  .fase .timecode{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+    margin-bottom:18px;display:flex;justify-content:space-between;
+    border-bottom:1px solid var(--ink);padding-bottom:8px;
+  }
+  .fase .ja{font-family:'Shippori Mincho',serif;font-size:1.4rem;color:var(--ink);display:block;margin-bottom:8px}
+  .fase h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.3rem;letter-spacing:-.015em;margin-bottom:8px;line-height:1.15}
+  .fase p{color:var(--ink-soft);font-size:.9rem}
+
+  /* ---------- BENEFICIOS BENTO ---------- */
+  .beneficios{background:var(--paper-2)}
+  .grid-ben{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
+  }
+  .card-ben{
+    border:1px solid var(--ink);background:var(--bone);
+    padding:28px 22px 24px;position:relative;overflow:hidden;
+    transition:background .3s, color .3s;
+  }
+  .card-ben:hover{background:var(--ink);color:var(--paper)}
+  .card-ben:hover .num{color:var(--red-bright)}
+  .card-ben:hover h3{color:var(--paper)}
+  .card-ben:hover p{color:rgba(236,228,211,.75)}
+  .card-ben .num{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+    margin-bottom:24px;display:block;font-weight:600;
+  }
+  .card-ben h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:-.015em;margin-bottom:8px;line-height:1.15}
+  .card-ben p{color:var(--ink-soft);font-size:.88rem;line-height:1.5;transition:color .3s}
+  .card-ben.span2{grid-column:span 2}
+  .card-ben.span3{grid-column:span 3}
+  .card-ben.feature{
+    grid-column:span 2;background:var(--red);color:var(--bone);
+  }
+  .card-ben.feature .num{color:var(--bone)}
+  .card-ben.feature h3{color:var(--bone);font-size:1.5rem}
+  .card-ben.feature p{color:rgba(236,228,211,.85)}
+  .card-ben.feature:hover{background:var(--ink)}
+
+  /* ---------- KATAS ---------- */
+  .katas{background:var(--paper)}
+  .kata-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .kata{
+    border:1px solid var(--ink);background:var(--bone);
+    padding:48px 40px;position:relative;overflow:hidden;
+    transition:transform .3s;
+  }
+  .kata:hover{transform:translateY(-4px)}
+  .kata::before{
+    content:attr(data-ja);position:absolute;top:-30px;right:-20px;
+    font-family:'Shippori Mincho',serif;font-size:14rem;line-height:.85;
+    color:var(--ink);opacity:.05;pointer-events:none;
+  }
+  .kata .ribbon{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:600;
+    margin-bottom:14px;display:flex;gap:8px;align-items:center;
+  }
+  .kata .ribbon::before{content:"◆";color:var(--red)}
+  .kata h3{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:3rem;letter-spacing:-.03em;line-height:1;margin-bottom:6px;
+  }
+  .kata h3 em{font-style:italic;color:var(--red);font-weight:300}
+  .kata .romaji{font-family:'Bricolage Grotesque',sans-serif;font-style:italic;color:var(--ink-soft);font-size:1.05rem;margin-bottom:24px;display:block;font-weight:400}
+  .kata p{color:var(--ink-soft);font-size:.96rem;max-width:40ch;margin-bottom:18px}
+  .kata dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:.9rem;margin-top:24px;border-top:1px solid var(--ink);padding-top:20px}
+  .kata dt{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .kata dd{color:var(--ink);font-weight:500}
+
+  .kata-extras{
+    margin-top:14px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+    padding:34px 40px;display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:center;
+  }
+  .kata-extras h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:1.4rem;line-height:1.15;letter-spacing:-.01em}
+  .kata-extras h4 em{color:var(--red-bright);font-style:italic}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    padding:6px 12px;border:1px solid rgba(236,228,211,.3);
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;
+    color:rgba(236,228,211,.85);transition:background .2s, color .2s;
+  }
+  .chip:hover{background:var(--red-bright);border-color:var(--red-bright);color:var(--bone)}
+
+  /* ---------- LINAJE ---------- */
+  .linaje{background:var(--paper-2)}
+  .timeline-h{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;
+    border:1px solid var(--ink);background:var(--bone);
+  }
+  .hito{
+    padding:36px 28px 32px;border-right:1px solid var(--ink);position:relative;
+    transition:background .3s;
+  }
+  .hito:last-child{border-right:0}
+  .hito:hover{background:var(--paper)}
+  .hito::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+    background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s;
+  }
+  .hito:hover::before{transform:scaleX(1)}
+  .hito .year{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-style:italic;
+    font-size:3rem;color:var(--red);line-height:1;margin-bottom:14px;display:block;letter-spacing:-.025em;
+  }
+  .hito h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:6px;line-height:1.2}
+  .hito p{color:var(--ink-soft);font-size:.88rem}
+
+  .akamine{
+    margin-top:60px;display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center;
+    border:1px solid var(--ink);background:var(--bone);padding:48px;
+  }
+  .akamine .photo{aspect-ratio:3/4;background:var(--ink);overflow:hidden;position:relative}
+  .akamine .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1)}
+  .akamine .photo::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at center, transparent 0.5px, rgba(168,0,6,.45) 1.4px);
+    background-size:5px 5px;mix-blend-mode:multiply;
+  }
+  .akamine .ribbon{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:600;
+    margin-bottom:14px;display:block;
+  }
+  .akamine h3{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:clamp(2rem,3vw,2.8rem);letter-spacing:-.025em;line-height:1.05;margin-bottom:8px;
+  }
+  .akamine h3 em{font-style:italic;color:var(--red);font-weight:300}
+  .akamine .dates{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:20px;display:block}
+  .akamine p{color:var(--ink-soft);font-size:.98rem;margin-bottom:14px;max-width:54ch}
+  .akamine blockquote{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:400;font-style:italic;
+    font-size:1.3rem;line-height:1.3;color:var(--ink);
+    margin:24px 0 8px;padding-left:20px;border-left:2px solid var(--red);max-width:50ch;
+  }
+
+  /* ---------- VOCABULARIO ---------- */
+  .vocab{background:var(--ink);color:var(--paper)}
+  .vocab .head h2{color:var(--paper)}
+  .vocab .head h2 em{color:var(--red-bright)}
+  .vocab .head .num{color:var(--red-bright);border-color:var(--red-bright)}
+  .vocab .head p.intro{color:rgba(236,228,211,.65)}
+  .grid-vocab{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid rgba(236,228,211,.18);
+  }
+  .term{
+    padding:28px 22px;
+    border-right:1px solid rgba(236,228,211,.18);
+    border-bottom:1px solid rgba(236,228,211,.18);
+    transition:background .3s;
+  }
+  .term:nth-child(4n){border-right:0}
+  .term:nth-last-child(-n+4){border-bottom:0}
+  .term:hover{background:var(--red)}
+  .term:hover .ja{color:var(--bone)}
+  .term:hover .romaji{color:var(--bone)}
+  .term .index{
+    font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;
+    color:rgba(236,228,211,.4);margin-bottom:14px;display:block;
+  }
+  .term .ja{font-family:'Shippori Mincho',serif;font-size:1.8rem;color:var(--paper);line-height:1;margin-bottom:6px;display:block;transition:color .3s}
+  .term .romaji{font-family:'Bricolage Grotesque',sans-serif;font-style:italic;font-size:1.1rem;color:var(--red-bright);margin-bottom:8px;display:block;transition:color .3s}
+  .term p{color:rgba(236,228,211,.7);font-size:.85rem;line-height:1.45}
+
+  /* ---------- PROGRAMAS ---------- */
+  .programas{background:var(--paper)}
+  .grid-prog{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card-prog{
+    border:1px solid var(--ink);background:var(--bone);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .3s;
+  }
+  .card-prog:hover{transform:translateY(-4px)}
+  .card-prog .img{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--ink);border-bottom:1px solid var(--ink)}
+  .card-prog .img img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05);transition:transform .6s}
+  .card-prog:hover .img img{transform:scale(1.04)}
+  .card-prog .img::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at center, transparent 0.5px, rgba(168,0,6,.45) 1.4px);
+    background-size:5px 5px;mix-blend-mode:multiply;
+  }
+  .card-prog .age{
+    position:absolute;top:14px;left:14px;z-index:2;
+    background:var(--bone);color:var(--ink);
+    padding:5px 11px;border:1px solid var(--ink);
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  }
+  .card-prog .body{padding:30px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .card-prog h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.7rem;letter-spacing:-.015em}
+  .card-prog p{color:var(--ink-soft);font-size:.92rem}
+  .card-prog ul{list-style:none;display:flex;flex-direction:column;margin-top:6px}
+  .card-prog ul li{
+    padding:10px 0;font-size:.88rem;color:var(--ink);
+    border-top:1px dashed var(--ink);display:flex;gap:10px;align-items:center;
+  }
+  .card-prog ul li::before{content:"+";color:var(--red);font-family:'JetBrains Mono',monospace;font-weight:700}
+
+  /* ---------- SEDES ---------- */
+  .sedes{background:var(--paper-2);border-top:1px solid var(--ink)}
+  .grid-sedes{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--ink)}
+  .sede{
+    padding:24px 20px;background:var(--bone);
+    border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    transition:background .25s;
+  }
+  .sede:nth-child(6n){border-right:0}
+  .sede:nth-last-child(-n+6){border-bottom:0}
+  .sede:hover{background:var(--paper)}
+  .sede .label{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:600;display:block;margin-bottom:10px}
+  .sede h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:4px}
+  .sede p{font-size:.82rem;color:var(--ink-soft)}
+  .sede.activa{background:var(--red);color:var(--bone)}
+  .sede.activa .label{color:var(--bone)}
+  .sede.activa p{color:rgba(236,228,211,.85)}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonios{background:var(--paper)}
+  .grid-test{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card-test{
+    border:1px solid var(--ink);background:var(--bone);padding:32px 28px 26px;
+    display:flex;flex-direction:column;gap:18px;transition:background .3s;
+  }
+  .card-test:hover{background:var(--paper)}
+  .card-test .stars{color:var(--red);letter-spacing:3px;font-size:.9rem}
+  .card-test blockquote{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:400;font-style:italic;
+    font-size:1.25rem;line-height:1.3;letter-spacing:-.01em;flex:1;
+  }
+  .autor{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--ink)}
+  .avatar{
+    width:42px;height:42px;background:var(--ink);color:var(--bone);
+    display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+  }
+  .autor strong{font-weight:600;font-size:.94rem;display:block}
+  .autor small{color:var(--ink-soft);font-size:.8rem}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--red);color:var(--bone);position:relative;overflow:hidden;border-bottom:1px solid var(--ink)}
+  .cta::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at center, var(--bone) 0.6px, transparent 1.2px);
+    background-size:14px 14px;opacity:.18;
+  }
+  .cta-grid{
+    position:relative;z-index:1;
+    max-width:1400px;margin:0 auto;padding:120px 28px;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;
+  }
+  .cta h2{font-size:clamp(2.4rem,5vw,4.4rem);color:var(--bone)}
+  .cta h2 em{font-style:italic;color:var(--ink);font-weight:300}
+  .cta .lead{font-size:1.05rem;color:rgba(236,228,211,.92);margin:24px 0 32px;max-width:480px}
+  .cta-feat{list-style:none;display:flex;flex-direction:column;gap:0}
+  .cta-feat li{
+    padding:16px 0;display:flex;gap:16px;align-items:center;
+    border-top:1px solid rgba(236,228,211,.3);font-size:.95rem;color:rgba(236,228,211,.95);
+  }
+  .cta-feat li:last-child{border-bottom:1px solid rgba(236,228,211,.3)}
+  .cta-feat li .n{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:var(--ink);font-weight:700}
+
+  .form{
+    background:var(--bone);color:var(--ink);
+    border:2px solid var(--ink);padding:40px 36px;
+  }
+  .form h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.7rem;letter-spacing:-.015em;margin-bottom:6px}
+  .form .sub{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px}
+  .field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+  .field label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .field input,.field select{
+    width:100%;padding:13px 14px;font-size:.95rem;font-family:'Familjen Grotesk',sans-serif;color:var(--ink);
+    background:var(--paper);border:1px solid var(--ink);border-radius:0;
+    outline:none;transition:background .2s;
+  }
+  .field input::placeholder{color:var(--ink-soft)}
+  .field input:focus,.field select:focus{background:var(--bone);box-shadow:inset 0 -2px 0 var(--red)}
+  .form .btn{width:100%;justify-content:center;margin-top:8px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--paper);padding:80px 28px 28px;position:relative;overflow:hidden}
+  footer::before{
+    content:"押忍";position:absolute;right:-30px;bottom:-100px;
+    font-family:'Shippori Mincho',serif;font-size:22rem;line-height:.8;
+    color:rgba(236,228,211,.04);pointer-events:none;
+  }
+  .foot-top{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:48px;border-bottom:1px solid rgba(236,228,211,.18);
+    position:relative;z-index:1;
+  }
+  .foot-brand{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:2.4rem;
+    letter-spacing:-.025em;line-height:1;margin-bottom:14px;
+  }
+  .foot-brand em{color:var(--red-bright);font-style:italic;font-weight:300}
+  .foot-top p{color:rgba(236,228,211,.7);font-size:.94rem;max-width:300px}
+  .foot-top h4{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--red-bright);margin-bottom:18px;font-weight:600;
+  }
+  .foot-top a,.foot-col p{display:block;padding:5px 0;color:rgba(236,228,211,.7);font-size:.92rem;transition:color .2s}
+  .foot-top a:hover{color:var(--red-bright)}
+  .foot-bottom{
+    max-width:1400px;margin:24px auto 0;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(236,228,211,.5);position:relative;z-index:1;
+  }
+  .foot-bottom .osu .kanji{color:var(--red-bright);font-size:.95rem}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1100px){
+    .nav-inner{grid-template-columns:1fr auto auto}
+    nav.menu{display:none}
+    nav.menu.abierto{
+      display:block;position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);border-bottom:1px solid var(--ink);padding:18px;z-index:10;
+    }
+    nav.menu.abierto ul{flex-direction:column;gap:0}
+    .menu-toggle{display:block}
+    .head{grid-template-columns:auto 1fr;gap:24px}
+    .head .num{writing-mode:horizontal-tb;transform:none;border-left:0;border-bottom:1px solid var(--red);padding:0 0 6px 0}
+    .head p.intro{grid-column:1/-1}
+    .c-title{grid-column:span 12;min-height:auto}
+    .c-photo{grid-column:span 12;min-height:380px}
+    .c-quote{grid-column:span 12}
+    .c-stat{grid-column:span 4}
+    .c-cta{grid-column:span 12}
+    .duo,.kata-grid{grid-template-columns:1fr}
+    .duo-side:first-child{border-right:0;border-bottom:1px solid var(--ink)}
+    .grid-pilares,.grid-vocab{grid-template-columns:repeat(2,1fr)}
+    .pilar:nth-child(2),.term:nth-child(2n){border-right:0}
+    .timeline,.timeline-h{grid-template-columns:repeat(2,1fr)}
+    .grid-ben,.grid-prog,.grid-test,.grid-sedes{grid-template-columns:1fr}
+    .card-ben{grid-column:span 1 !important}
+    .akamine{grid-template-columns:1fr;padding:32px}
+    .kata-extras{grid-template-columns:1fr;gap:24px}
+    .cta-grid{grid-template-columns:1fr;gap:48px;padding:80px 24px}
+    .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+  }
+  @media (max-width:560px){
+    section{padding:80px 20px}
+    .grid-pilares,.timeline,.timeline-h,.grid-vocab{grid-template-columns:1fr}
+    .pilar,.fase,.hito,.term{border-right:0 !important}
+    .foot-top{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>// Dojo Kazoku <span class="sep">/</span> Ken Shin Kan</span>
+    <span class="sep">●</span>
+    <span>La Granja, Santiago</span>
+    <span class="sep">●</span>
+    <span>EST. linaje akamine — 1968</span>
+    <span class="sep">●</span>
+    <span>Primera clase = $0</span>
+    <span class="sep">●</span>
+    <span>押忍 OSU</span>
+    <span class="sep">●</span>
+    <span>// Dojo Kazoku <span class="sep">/</span> Ken Shin Kan</span>
+    <span class="sep">●</span>
+    <span>La Granja, Santiago</span>
+    <span class="sep">●</span>
+    <span>EST. linaje akamine — 1968</span>
+    <span class="sep">●</span>
+    <span>Primera clase = $0</span>
+    <span class="sep">●</span>
+    <span>押忍 OSU</span>
+    <span class="sep">●</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="../../resources/img/kazoku_small.jpg" alt="Dojo Kazoku" />
+      <span class="text">
+        <strong>Kazoku</strong>
+        <small>KSK_DOJO / 03</small>
+      </span>
+    </a>
+    <nav class="menu" id="navMenu">
+      <ul>
+        <li><a href="#espiritu">Espíritu</a></li>
+        <li><a href="#pilares">Pilares</a></li>
+        <li><a href="#clase">La clase</a></li>
+        <li><a href="#katas">Katas</a></li>
+        <li><a href="#linaje">Linaje</a></li>
+        <li><a href="#programas">Programas</a></li>
+        <li><a href="#sedes">Red KSK</a></li>
+      </ul>
+    </nav>
+    <a href="#contacto" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
+    <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
+  </div>
+</header>
+
+<!-- HERO BENTO -->
+<section class="hero">
+  <div class="bento">
+
+    <!-- TITLE -->
+    <div class="cell c-title">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="cell-pin mono">[A1] · OPEN_2026</span>
+      <h1 class="display">
+        Karate que <span class="strike">forja</span><br>
+        carácter, no <span class="red">trofeos</span>.
+      </h1>
+      <div class="meta">
+        <p class="lead">Dojo Kazoku — Ken Shin Kan en La Granja. Bajo el linaje del Sensei Akamine. Tigre y águila. Duro y suave a la vez.</p>
+        <div class="stamps">
+          <span class="stamp red">Clase #1 = $0</span>
+          <span class="stamp">+20 años · Linaje KSK</span>
+          <span class="stamp">虎 · 鷲</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div class="cell c-photo">
+      <span class="cell-pin mono" style="color:var(--bone);opacity:.55;z-index:3">[B1] · DOJO_KSK</span>
+      <span class="badge">Reserva ▸</span>
+      <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1400&q=85" alt="Karateka practicando" />
+      <div class="overlay-text">
+        <span class="ja">押忍</span>
+        <span class="label">Osu — perseverar</span>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="cell c-quote">
+      <span class="cell-pin mono" style="color:rgba(236,228,211,.55)">[A2] · DOCTRINE</span>
+      <span class="label">Lema fundacional</span>
+      <blockquote>"La esencia del karate no radica en la victoria o la derrota, sino en la perfección del carácter."</blockquote>
+      <cite>— Gichin Funakoshi</cite>
+    </div>
+
+    <!-- STAT 1 -->
+    <div class="cell c-stat">
+      <span class="cell-pin mono">[A3]</span>
+      <span class="label">Linaje · Año</span>
+      <span class="num">1968</span>
+    </div>
+    <!-- STAT 2 -->
+    <div class="cell c-stat">
+      <span class="cell-pin mono">[A4]</span>
+      <span class="label">Karatekas</span>
+      <span class="num">300<span class="small">+</span></span>
+    </div>
+
+    <!-- CTA -->
+    <a href="#contacto" class="cell c-cta">
+      <span class="corner tl" style="color:var(--bone)"></span><span class="corner br" style="color:var(--bone)"></span>
+      <span class="label">▸ Acción inmediata</span>
+      <strong>Reserva tu clase de prueba — gratis.</strong>
+      <span class="arr">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- INFO MARQUEE -->
+<div class="info-bar">
+  <div class="info-track">
+    <span>RESPETO <span class="star">/</span></span>
+    <span>DISCIPLINA <span class="star">/</span></span>
+    <span>CARÁCTER <span class="star">/</span></span>
+    <span>COMUNIDAD <span class="star">/</span></span>
+    <span>SALUD <span class="star">/</span></span>
+    <span>TRADICIÓN <span class="star">/</span></span>
+    <span>RESPETO <span class="star">/</span></span>
+    <span>DISCIPLINA <span class="star">/</span></span>
+    <span>CARÁCTER <span class="star">/</span></span>
+    <span>COMUNIDAD <span class="star">/</span></span>
+    <span>SALUD <span class="star">/</span></span>
+    <span>TRADICIÓN <span class="star">/</span></span>
+  </div>
+</div>
+
+<!-- ESPÍRITU -->
+<section id="espiritu">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 01 — Espíritu</div>
+      <h2 class="display">El <em>tigre</em><br>y el <em>águila</em>.</h2>
+      <p class="intro">A diferencia del Goju-ryu tradicional (oso y grulla), el Ken Shin Kan reemplaza la simbología por dos animales que encarnan la dualidad: la fortaleza terrestre y la inteligencia aérea.</p>
+    </div>
+    <div class="duo">
+      <div class="duo-side">
+        <span class="hero-kanji">虎</span>
+        <span class="ribbon">Ken · Go · Dureza</span>
+        <h3>Fortaleza y <em>agilidad</em>.</h3>
+        <p>El tigre representa el cuerpo entrenado, los músculos forjados, la presencia firme sobre el tatami. Es la dimensión Go — dura y enraizada.</p>
+        <dl>
+          <dt>Energía</dt><dd>Go (剛) — dureza</dd>
+          <dt>Kata</dt><dd>Sanchin · 三戦</dd>
+          <dt>Cualidad</dt><dd>Tensión controlada · raíz</dd>
+          <dt>Respiración</dt><dd>Completa, en tres etapas</dd>
+        </dl>
+      </div>
+      <div class="duo-side">
+        <span class="hero-kanji">鷲</span>
+        <span class="ribbon">Shin · Ju · Suavidad</span>
+        <h3>Velocidad e <em>inteligencia</em>.</h3>
+        <p>El águila representa la mente clara, la vista que anticipa, los movimientos circulares como el batir de las alas. Es la dimensión Ju — suave y rítmica.</p>
+        <dl>
+          <dt>Energía</dt><dd>Ju (柔) — suavidad</dd>
+          <dt>Kata</dt><dd>Tensho · 転掌</dd>
+          <dt>Cualidad</dt><dd>Movimientos circulares · lectura</dd>
+          <dt>Respiración</dt><dd>Suave y rítmica</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" class="pilares">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 02 — Pilares</div>
+      <h2 class="display">Cuatro aspectos<br><em>esenciales</em>.</h2>
+      <p class="intro">Todo alumno del Ken Shin Kan cultiva cuatro aspectos que se sostienen mutuamente. Sin uno de ellos, el resto pierde sentido.</p>
+    </div>
+    <div class="grid-pilares">
+      <div class="pilar">
+        <span class="num">i. — Vista</span>
+        <span class="ja">眼</span>
+        <h3>Vista</h3>
+        <p>Leer la distancia, el ritmo y la intención. Anticipación entrenada.</p>
+      </div>
+      <div class="pilar">
+        <span class="num">ii. — Piernas</span>
+        <span class="ja">脚</span>
+        <h3>Piernas</h3>
+        <p>La base. Desplazamiento, raíz y soporte de toda la técnica.</p>
+      </div>
+      <div class="pilar">
+        <span class="num">iii. — Coraje</span>
+        <span class="ja">勇</span>
+        <h3>Coraje</h3>
+        <p>Decisión sin agresión. El espíritu que sostiene la técnica bajo presión.</p>
+      </div>
+      <div class="pilar">
+        <span class="num">iv. — Fuerza</span>
+        <span class="ja">力</span>
+        <h3>Fuerza</h3>
+        <p>Energía dirigida. No bruta, sino articulada y consciente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CLASE -->
+<section id="clase" class="clase">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 03 — La clase</div>
+      <h2 class="display">60 minutos en<br><em>cuatro fases</em>.</h2>
+      <p class="intro">Estructura consolidada por el Sensei Akamine. Cada segmento de quince minutos cumple una función específica en el entrenamiento.</p>
+    </div>
+    <div class="clase-bar" aria-hidden="true">
+      <div class="seg s1">15′ · meditación</div>
+      <div class="seg s2">15′ · técnica</div>
+      <div class="seg s3">15′ · aplicación</div>
+      <div class="seg s4">15′ · cierre</div>
+    </div>
+    <div class="timeline">
+      <div class="fase">
+        <div class="timecode"><span>00:00 → 00:15</span><span>i</span></div>
+        <span class="ja">静坐</span>
+        <h3>Meditación y calentamiento</h3>
+        <p>Seiza, respiración consciente y movilidad articular para entrar al estado del dojo.</p>
+      </div>
+      <div class="fase">
+        <div class="timecode"><span>00:15 → 00:30</span><span>ii</span></div>
+        <span class="ja">基本</span>
+        <h3>Técnica y desplazamiento</h3>
+        <p>Explicación técnica y práctica dinámica: kihon estático y en desplazamiento.</p>
+      </div>
+      <div class="fase">
+        <div class="timecode"><span>00:30 → 00:45</span><span>iii</span></div>
+        <span class="ja">型・組手</span>
+        <h3>Kata, Kumite o Kobudo</h3>
+        <p>Aplicación: ejecución de katas, combate controlado o trabajo con armas tradicionales.</p>
+      </div>
+      <div class="fase">
+        <div class="timecode"><span>00:45 → 01:00</span><span>iv</span></div>
+        <span class="ja">残心</span>
+        <h3>Vuelta a la calma</h3>
+        <p>Estiramiento final, regulación de la respiración y cierre con zanshin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS BENTO -->
+<section class="beneficios">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 04 — Beneficios</div>
+      <h2 class="display">Lo que se <em>nota</em><br>fuera del tatami.</h2>
+      <p class="intro">El Ken Shin Kan opera en seis frentes simultáneos. No prometemos magia: prometemos consistencia.</p>
+    </div>
+    <div class="grid-ben">
+      <div class="card-ben span2"><span class="num">// 01 — Cuerpo</span><h3>Salud Física</h3><p>Fuerza estructural, resistencia y flexibilidad funcional desde la primera clase.</p></div>
+      <div class="card-ben span2"><span class="num">// 02 — Mente</span><h3>Reducción del estrés</h3><p>Foco, respiración consciente y claridad emocional sostenida.</p></div>
+      <div class="card-ben span2"><span class="num">// 03 — Identidad</span><h3>Confianza</h3><p>Cada cinturón es una victoria personal medible y celebrable.</p></div>
+      <div class="card-ben feature span2"><span class="num">// 04 — Hábito</span><h3>Disciplina · trasladable</h3><p>Costumbres del dojo que se replican en colegio, trabajo y hogar.</p></div>
+      <div class="card-ben span2"><span class="num">// 05 — Familia</span><h3>Comunidad (Kazoku)</h3><p>Una familia que sostiene tu progreso clase tras clase.</p></div>
+      <div class="card-ben span2"><span class="num">// 06 — Carácter</span><h3>Espíritu fuerte</h3><p>Duro y suave a la vez. La esencia del Ken Shin Kan en una persona.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KATAS -->
+<section id="katas" class="katas">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 05 — Las formas</div>
+      <h2 class="display">Sanchin &amp; Tensho<br>— <em>la dualidad</em>.</h2>
+      <p class="intro">Los katas son formas técnicas preestablecidas que despiertan el Ki — la energía interna. Se ejecutan con tensión controlada y son el corazón del entrenamiento avanzado.</p>
+    </div>
+    <div class="kata-grid">
+      <article class="kata" data-ja="三戦">
+        <span class="ribbon">Kata · Go · Ken · Tigre</span>
+        <h3>Sanchin <em>三戦</em></h3>
+        <span class="romaji">"Tres batallas"</span>
+        <p>Limpia los tres centros fundamentales — cerebro, corazón y estómago — fortaleciendo músculos y tendones a través de tensión sostenida.</p>
+        <dl>
+          <dt>Energía</dt><dd>Go — dureza</dd>
+          <dt>Símbolo</dt><dd>Ken · Tigre</dd>
+          <dt>Respiración</dt><dd>Completa, en tres etapas</dd>
+          <dt>Origen</dt><dd>Taoísta · ~2000 a.C.</dd>
+        </dl>
+      </article>
+      <article class="kata" data-ja="転掌">
+        <span class="ribbon">Kata · Ju · Shin · Águila</span>
+        <h3>Tensho <em>転掌</em></h3>
+        <span class="romaji">"Manos cambiantes"</span>
+        <p>Movimientos circulares que imitan el batir de las alas de las aves. La contraparte fluida de Sanchin: lo mismo, en su forma suave.</p>
+        <dl>
+          <dt>Energía</dt><dd>Ju — suavidad</dd>
+          <dt>Símbolo</dt><dd>Shin · Águila</dd>
+          <dt>Respiración</dt><dd>Suave y rítmica</dd>
+          <dt>Origen</dt><dd>Chojun Miyagi · Hakutsuru</dd>
+        </dl>
+      </article>
+    </div>
+    <div class="kata-extras">
+      <h4>Katas <em>incorporados</em><br>por el Sensei Akamine</h4>
+      <div class="chips">
+        <span class="chip">Ryufa</span>
+        <span class="chip">Seisan</span>
+        <span class="chip">Ken-Shin-ryu</span>
+        <span class="chip">Kanshu</span>
+        <span class="chip">Kansha</span>
+        <span class="chip">Kanshiwa</span>
+        <span class="chip">+ Bunkai</span>
+        <span class="chip">+ Nage-waza</span>
+        <span class="chip">50/50 manos · piernas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINAJE -->
+<section id="linaje" class="linaje">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 06 — Linaje</div>
+      <h2 class="display">Una tradición<br><em>documentada</em>.</h2>
+      <p class="intro">Desde Naha hasta La Granja: el linaje del Ken Shin Kan está vivo, registrado y se transmite generación tras generación.</p>
+    </div>
+    <div class="timeline-h">
+      <div class="hito">
+        <span class="year">1920</span>
+        <h3>Nace Sensei Akamine</h3>
+        <p>En Naha, Okinawa. Descendiente de samuráis.</p>
+      </div>
+      <div class="hito">
+        <span class="year">1957</span>
+        <h3>Llegada a Brasil</h3>
+        <p>Sensei Akamine se establece en Sudamérica.</p>
+      </div>
+      <div class="hito">
+        <span class="year">1968</span>
+        <h3>Fundación oficial</h3>
+        <p>Se establece formalmente la escuela Ken Shin Kan.</p>
+      </div>
+      <div class="hito">
+        <span class="year">1969</span>
+        <h3>Llegada a Chile</h3>
+        <p>Hermanos Roberto y Raúl Fernández de la Reguera.</p>
+      </div>
+    </div>
+
+    <div class="akamine">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=85" alt="Sensei tradicional" />
+      </div>
+      <div>
+        <span class="ribbon">El fundador</span>
+        <h3 class="display">Sensei Seiichi <em>Akamine</em></h3>
+        <span class="dates">1920 — 1995 · Naha, Okinawa</span>
+        <p>Descendiente de una familia samurái, el Sensei Akamine se formó en múltiples disciplinas marciales antes de consolidar lo que llamaría Ken Shin Kan: una síntesis del Goju-ryu con elementos del Bugeikan de Seitoku Higa, del Uechi-ryu de Kanbun Uechi, y del Judo y Jiu-jitsu — equilibrando manos y piernas en proporción 50/50.</p>
+        <p>Su llegada a Brasil en 1957 marcó el inicio de la expansión sudamericana del estilo. La escuela tomó forma oficial en 1968 y un año después cruzó la cordillera hacia Chile.</p>
+        <blockquote>El objetivo no es vencer al otro, sino forjar un espíritu fuerte — duro y suave a la vez.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOCABULARIO -->
+<section class="vocab">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 07 — Glosario</div>
+      <h2 class="display">El idioma<br>del <em>dojo</em>.</h2>
+      <p class="intro">Términos esenciales que escucharás desde la primera clase. Aprenderlos es parte del entrenamiento.</p>
+    </div>
+    <div class="grid-vocab">
+      <div class="term"><span class="index">[01]</span><span class="ja">道場</span><span class="romaji">Dojo</span><p>"Lugar del camino". Espacio sagrado de práctica.</p></div>
+      <div class="term"><span class="index">[02]</span><span class="ja">先生</span><span class="romaji">Sensei</span><p>El que ha caminado antes. Maestro guía.</p></div>
+      <div class="term"><span class="index">[03]</span><span class="ja">気合</span><span class="romaji">Kiai</span><p>Grito que concentra y libera la energía interna.</p></div>
+      <div class="term"><span class="index">[04]</span><span class="ja">残心</span><span class="romaji">Zanshin</span><p>Estado mental atento que persiste tras la técnica.</p></div>
+      <div class="term"><span class="index">[05]</span><span class="ja">基本</span><span class="romaji">Kihon</span><p>Las técnicas básicas. La base de toda la práctica.</p></div>
+      <div class="term"><span class="index">[06]</span><span class="ja">型</span><span class="romaji">Kata</span><p>Forma preestablecida. Diálogo con maestros del pasado.</p></div>
+      <div class="term"><span class="index">[07]</span><span class="ja">組手</span><span class="romaji">Kumite</span><p>Combate cooperativo o libre, controlado por etiqueta.</p></div>
+      <div class="term"><span class="index">[08]</span><span class="ja">押忍</span><span class="romaji">Osu</span><p>Saludo y compromiso. Perseverar bajo presión.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas" class="programas">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 08 — Programas</div>
+      <h2 class="display">Una escuela<br>para <em>cada edad</em>.</h2>
+      <p class="intro">Grupos diferenciados por edad, nivel y objetivo. Desde los primeros pasos del kihon hasta la maestría técnica del kata.</p>
+    </div>
+    <div class="grid-prog">
+      <div class="card-prog">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=900&q=85" alt="" />
+          <span class="age">5 — 12 años</span>
+        </div>
+        <div class="body">
+          <h3>Niños</h3>
+          <p>Disciplina, valores y confianza a través de un entrenamiento estructurado.</p>
+          <ul>
+            <li>Coordinación motriz y juego dirigido</li>
+            <li>Respeto y etiqueta del dojo</li>
+            <li>Evaluaciones periódicas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-prog">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=900&q=85" alt="" />
+          <span class="age">13+ años</span>
+        </div>
+        <div class="body">
+          <h3>Jóvenes &amp; Adultos</h3>
+          <p>Fitness funcional, manejo del estrés y técnica tradicional.</p>
+          <ul>
+            <li>Kihon, Kata y Kumite</li>
+            <li>Acondicionamiento físico</li>
+            <li>Preparación para torneos KSK</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-prog">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=85" alt="" />
+          <span class="age">Adultos</span>
+        </div>
+        <div class="body">
+          <h3>Defensa Personal</h3>
+          <p>Programa intensivo enfocado en escenarios reales.</p>
+          <ul>
+            <li>Escenarios de defensa real</li>
+            <li>Manejo de distancia y tiempo</li>
+            <li>Confianza en espacios públicos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEDES -->
+<section id="sedes" class="sedes">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 09 — Red KSK</div>
+      <h2 class="display">Sedes en la<br><em>Región Metropolitana</em>.</h2>
+      <p class="intro">Una red de dojos hermanos. Si el nuestro queda lejos, encuentra el más cercano a tu hogar.</p>
+    </div>
+    <div class="grid-sedes">
+      <div class="sede activa">
+        <span class="label">▸ Tu dojo</span>
+        <h4>Kazoku</h4>
+        <p>La Granja</p>
+      </div>
+      <div class="sede"><span class="label">Ñuñoa</span><h4>Shikan</h4><p>Dojo hermano</p></div>
+      <div class="sede"><span class="label">Ñuñoa</span><h4>LMS</h4><p>Dojo hermano</p></div>
+      <div class="sede"><span class="label">Ñuñoa</span><h4>Echeñique</h4><p>Dojo hermano</p></div>
+      <div class="sede"><span class="label">La Florida</span><h4>Soto</h4><p>Dojo hermano</p></div>
+      <div class="sede"><span class="label">La Florida</span><h4>Pang</h4><p>Dojo hermano</p></div>
+      <div class="sede"><span class="label">Quilicura</span><h4>Kuro Obi</h4><p>"Cinturón negro"</p></div>
+      <div class="sede"><span class="label">Maipú</span><h4>Sakura</h4><p>"Flor de cerezo"</p></div>
+      <div class="sede"><span class="label">Puente Alto</span><h4>Kasai Senshi</h4><p>"Guerrero del fuego"</p></div>
+      <div class="sede"><span class="label">Linaje</span><h4>Akamine — KSK</h4><p>Una sola escuela</p></div>
+      <div class="sede"><span class="label">Eventos</span><h4>Seminarios KSK</h4><p>Anual</p></div>
+      <div class="sede"><span class="label">Eventos</span><h4>Torneos KSK</h4><p>Anual</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="testimonios">
+  <div class="container">
+    <div class="head">
+      <div class="num">§ 10 — Voces</div>
+      <h2 class="display">Lo que dice<br>la <em>familia</em>.</h2>
+      <p class="intro">Padres y alumnos que confiaron en el dojo y vieron resultados — dentro y fuera del tatami.</p>
+    </div>
+    <div class="grid-test">
+      <div class="card-test">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Mi hijo cambió desde que entrena en Kazoku. Más responsable, seguro y respetuoso. La mejor decisión que tomamos como familia."</blockquote>
+        <div class="autor"><div class="avatar">CM</div><div><strong>Carolina M.</strong><small>Hijo de 8 años · 2 años</small></div></div>
+      </div>
+      <div class="card-test">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Llegué buscando bajar el estrés y encontré una disciplina que me cambió la vida. El sensei guía con paciencia y exigencia justa."</blockquote>
+        <div class="autor"><div class="avatar">RF</div><div><strong>Rodrigo F.</strong><small>Cinturón verde · 3 años</small></div></div>
+      </div>
+      <div class="card-test">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Ambiente limpio, profesional y muy familiar. Mis dos hijas adoran cada clase. Se nota la tradición."</blockquote>
+        <div class="autor"><div class="avatar">PS</div><div><strong>Paula S.</strong><small>Hijas de 7 y 10 años</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" class="cta">
+  <div class="cta-grid">
+    <div>
+      <span class="cell-pin mono" style="position:relative;color:var(--ink);font-weight:700;letter-spacing:.18em;display:inline-block;margin-bottom:14px">▸ RSVP / Reserva online</span>
+      <h2 class="display">Tu primera clase<br>es <em>gratis</em>.</h2>
+      <p class="lead">Sin compromiso. Solo trae ropa cómoda y muchas ganas. Te recibimos en el dojo con la atención de un sensei certificado, bajo la tradición Ken Shin Kan.</p>
+      <ul class="cta-feat">
+        <li><span class="n">[01]</span> Reserva online y seguimiento de cinturones</li>
+        <li><span class="n">[02]</span> Pagos automatizados y facturación digital</li>
+        <li><span class="n">[03]</span> Ambiente limpio, profesional y familiar</li>
+        <li><span class="n">[04]</span> Linaje documentado del Sensei Akamine</li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+      <h3>Reserva tu clase</h3>
+      <p class="sub">// Te confirmamos por WhatsApp el mismo día</p>
+      <div class="field"><label>Nombre completo</label><input type="text" required placeholder="Tu nombre" /></div>
+      <div class="field"><label>Teléfono / WhatsApp</label><input type="tel" required placeholder="+56 9 ..." /></div>
+      <div class="field"><label>Correo electrónico</label><input type="email" required placeholder="hola@email.com" /></div>
+      <div class="field"><label>¿Para quién?</label>
+        <select required>
+          <option value="">Selecciona un programa</option>
+          <option>Niños (5–12)</option>
+          <option>Jóvenes / Adultos</option>
+          <option>Defensa personal</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-ink">Confirmar reserva <span class="arr">→</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">Dojo <em>Kazoku</em>.</div>
+      <p>Karate-Do Ken Shin Kan en La Granja, Santiago. Bajo el linaje del Sensei Seiichi Akamine. Forjando carácter desde el primer kiai.</p>
+    </div>
+    <div class="foot-col">
+      <h4>// Escuela</h4>
+      <a href="#espiritu">Espíritu KSK</a>
+      <a href="#pilares">Los 4 pilares</a>
+      <a href="#katas">Katas</a>
+      <a href="#linaje">Linaje</a>
+    </div>
+    <div class="foot-col">
+      <h4>// Horarios</h4>
+      <p>Lun–Vie · 17:00 / 21:00</p>
+      <p>Sábados · 10:00 / 13:00</p>
+      <p>Domingos · cerrado</p>
+    </div>
+    <div class="foot-col">
+      <h4>// Contacto</h4>
+      <p>La Granja · Santiago</p>
+      <a href="tel:+56900000000">+56 9 0000 0000</a>
+      <a href="mailto:hola@dojokazoku.cl">hola@dojokazoku.cl</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Dojo Kazoku · KSK · La Granja, Santiago</span>
+    <span class="osu"><span class="kanji">押忍</span> · OSU</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){
+        e.target.style.opacity=1;
+        e.target.style.transform='translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.08,rootMargin:'-30px'});
+  document.querySelectorAll('.cell,.duo-side,.pilar,.fase,.card-ben,.kata,.hito,.term,.card-prog,.sede,.card-test').forEach((el,i)=>{
+    el.style.opacity=0;
+    el.style.transform='translateY(18px)';
+    el.style.transition='opacity .65s ease, transform .65s cubic-bezier(.2,.8,.2,1)';
+    el.style.transitionDelay=(i%5)*55+'ms';
+    io.observe(el);
+  });
+
+  // Mouse spotlight on hero photo
+  const photo = document.querySelector('.c-photo');
+  if(photo){
+    photo.addEventListener('mousemove',(e)=>{
+      const r = photo.getBoundingClientRect();
+      const x = ((e.clientX - r.left)/r.width)*100;
+      const y = ((e.clientY - r.top)/r.height)*100;
+      photo.style.setProperty('--mx',x+'%');
+      photo.style.setProperty('--my',y+'%');
+    });
+  }
+</script>
+</body>
+</html>
