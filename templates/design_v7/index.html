@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dojo Kazoku · 家族 — Ken Shin Kan</title>
+<meta name="description" content="Karate Ken Shin Kan en La Granja. Arte marcial como práctica meditativa." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rice:#f1ebdc;
+    --rice-2:#e7dfcb;
+    --ink:#0a0a0a;
+    --ink-soft:#56524a;
+    --wash:#b8b1a0;
+    --seal:#b5181f;
+    --gold:#9c7a3a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    font-size:16px;line-height:1.7;color:var(--ink);background:var(--rice);
+    font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:200;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>");
+    opacity:.4;mix-blend-mode:multiply;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--seal);color:var(--rice)}
+
+  .serif{font-family:'EB Garamond',serif}
+  .jp{font-family:'Noto Serif JP',serif}
+  .display{font-family:'EB Garamond',serif;font-weight:500;line-height:1.02;letter-spacing:-0.018em}
+  .display em{font-style:italic;font-weight:400}
+
+  .container{max-width:1240px;margin:0 auto;padding:0 40px}
+
+  /* Vertical Japanese accent */
+  .tategaki{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-family:'Noto Serif JP',serif;font-size:.85rem;letter-spacing:.3em;
+    color:var(--wash);font-weight:400;
+  }
+
+  /* Brush underline SVG */
+  .brushed{position:relative;display:inline-block}
+  .brushed::after{
+    content:"";position:absolute;left:0;right:0;bottom:-12px;height:14px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'><path d='M2,8 C40,2 80,12 120,6 C160,2 180,10 198,7' stroke='%23b5181f' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+    opacity:.85;
+  }
+
+  .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:54px;height:54px;background:var(--seal);color:var(--rice);
+    font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.4rem;
+    transform:rotate(-3deg);box-shadow:1px 1px 0 rgba(0,0,0,.15);
+    line-height:1;letter-spacing:0;
+  }
+
+  .eyebrow{
+    font-size:.7rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);display:inline-flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:32px;height:1px;background:var(--seal)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:32px;left:50%;transform:translateX(-50%);
+    z-index:60;width:calc(100% - 80px);max-width:1240px;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 28px;
+    background:rgba(241,235,220,.85);backdrop-filter:blur(14px);
+    border:1px solid rgba(10,10,10,.08);
+  }
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo img{
+    width:42px;height:42px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--ink);
+  }
+  .logo .text{display:flex;flex-direction:column;line-height:1}
+  .logo .text strong{font-family:'EB Garamond',serif;font-weight:500;font-size:1.3rem;letter-spacing:-.01em}
+  .logo .text small{font-family:'Noto Serif JP',serif;font-size:.66rem;letter-spacing:.2em;color:var(--seal);margin-top:4px;font-weight:400}
+  nav.menu ul{display:flex;gap:0;list-style:none}
+  nav.menu a{
+    padding:8px 14px;font-size:.82rem;color:var(--ink);font-weight:400;
+    transition:color .25s;
+  }
+  nav.menu a:hover{color:var(--seal)}
+  .menu-toggle{
+    display:none;background:transparent;border:1px solid var(--ink);
+    width:38px;height:38px;cursor:pointer;color:var(--ink);
+    align-items:center;justify-content:center;padding:0;
+    transition:background .2s, color .2s;
+  }
+  .menu-toggle:hover{background:var(--ink);color:var(--rice)}
+  .menu-toggle svg{width:18px;height:18px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;font-size:.82rem;font-weight:500;letter-spacing:.04em;
+    background:var(--ink);color:var(--rice);border:1px solid var(--ink);
+    font-family:inherit;cursor:pointer;transition:all .25s;border-radius:0;
+  }
+  .btn:hover{background:var(--seal);border-color:var(--seal)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--rice)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;padding:160px 0 100px;position:relative;
+    display:flex;align-items:center;
+  }
+  .hero-grid{
+    max-width:1240px;margin:0 auto;padding:0 40px;
+    display:grid;grid-template-columns:48px 1fr 1fr;gap:60px;align-items:end;
+    position:relative;
+  }
+  .hero-tategaki{align-self:start;padding-top:40px;height:520px}
+  .hero-text h1{
+    font-size:clamp(3rem,7vw,6.4rem);color:var(--ink);
+    margin-bottom:40px;
+  }
+  .hero-text h1 .seal-inline{font-size:.5em;vertical-align:middle;margin:0 .1em}
+  .hero-eyebrow{margin-bottom:32px;color:var(--ink-soft)}
+  .hero-text p.lead{
+    font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem;
+    color:var(--ink-soft);max-width:42ch;margin-bottom:36px;line-height:1.45;
+  }
+  .hero-ctas{display:flex;gap:12px}
+
+  .hero-photo{
+    aspect-ratio:3/4;position:relative;background:var(--ink);
+    overflow:hidden;
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(100%) contrast(1.08);
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(241,235,220,.18));
+  }
+  .hero-photo .hanko{
+    position:absolute;bottom:24px;right:24px;
+  }
+
+  .hero-foot{
+    max-width:1240px;margin:80px auto 0;padding:0 40px;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;
+    border-top:1px solid rgba(10,10,10,.15);padding-top:32px;
+  }
+  .hero-foot div .k{font-family:'EB Garamond',serif;font-weight:500;font-size:2rem;line-height:1;letter-spacing:-.02em;color:var(--seal)}
+  .hero-foot div .v{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;display:block}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:140px 0;position:relative}
+  .head{
+    display:grid;grid-template-columns:48px 1fr;gap:60px;
+    margin-bottom:80px;align-items:start;
+  }
+  .head .index{
+    font-family:'Noto Serif JP',serif;color:var(--seal);font-size:1.1rem;
+    writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.2em;height:120px;
+  }
+  .head .body{max-width:780px}
+  .head h2{font-size:clamp(2.4rem,5vw,4.2rem);margin-top:22px;color:var(--ink)}
+  .head h2 em{color:var(--seal)}
+  .head p.intro{margin-top:32px;color:var(--ink-soft);max-width:60ch;font-size:1.05rem;line-height:1.7}
+
+  /* ---------- ESPÍRITU (dual hanging scroll) ---------- */
+  .espiritu{background:var(--rice)}
+  .scrolls{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    position:relative;
+  }
+  .scrolls::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(180deg, transparent, rgba(10,10,10,.2) 15%, rgba(10,10,10,.2) 85%, transparent);
+  }
+  .scroll{
+    padding:40px 60px;text-align:center;position:relative;
+  }
+  .scroll:first-child{padding-left:0}
+  .scroll:last-child{padding-right:0}
+  .scroll .big-ja{
+    font-family:'Noto Serif JP',serif;font-weight:700;
+    font-size:11rem;line-height:.85;color:var(--ink);margin-bottom:24px;display:block;
+  }
+  .scroll .roman{
+    font-family:'EB Garamond',serif;font-style:italic;font-weight:500;
+    font-size:2.4rem;color:var(--seal);margin-bottom:10px;display:block;
+  }
+  .scroll .anim{
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
+    margin-bottom:32px;display:block;
+  }
+  .scroll h3{
+    font-family:'EB Garamond',serif;font-weight:500;font-size:1.8rem;
+    letter-spacing:-.01em;line-height:1.2;margin-bottom:18px;
+  }
+  .scroll p{color:var(--ink-soft);font-size:1rem;max-width:36ch;margin:0 auto}
+
+  /* ---------- PILARES (vertical strokes) ---------- */
+  .pilares{background:var(--rice-2);padding:160px 0}
+  .grid-pilares{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+    padding-top:30px;
+  }
+  .pilar{
+    text-align:center;padding:36px 16px 28px;border-top:1px solid var(--ink);
+    transition:padding-top .3s;
+  }
+  .pilar:hover{padding-top:26px}
+  .pilar .stroke{
+    font-family:'Noto Serif JP',serif;font-weight:700;font-size:4.6rem;
+    color:var(--ink);line-height:.9;margin-bottom:24px;display:block;
+  }
+  .pilar h3{
+    font-family:'EB Garamond',serif;font-weight:500;font-size:1.5rem;letter-spacing:-.005em;
+    margin-bottom:8px;
+  }
+  .pilar h3 em{font-style:italic;color:var(--seal)}
+  .pilar p{font-size:.92rem;color:var(--ink-soft);max-width:24ch;margin:0 auto}
+
+  /* ---------- CLASE ---------- */
+  .clase{background:var(--rice)}
+  .fases{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .fase{
+    padding:48px 32px 40px;border-right:1px solid rgba(10,10,10,.18);
+    transition:background .35s;
+  }
+  .fase:last-child{border-right:0}
+  .fase:hover{background:var(--rice-2)}
+  .fase .ja{font-family:'Noto Serif JP',serif;font-size:1.5rem;color:var(--seal);display:block;margin-bottom:14px}
+  .fase .timecode{
+    font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ink-soft);
+    margin-bottom:18px;display:block;
+  }
+  .fase h3{font-family:'EB Garamond',serif;font-weight:500;font-size:1.4rem;letter-spacing:-.01em;margin-bottom:10px;line-height:1.2}
+  .fase p{font-size:.92rem;color:var(--ink-soft)}
+
+  /* ---------- KATAS ---------- */
+  .katas{background:var(--ink);color:var(--rice)}
+  .katas .head h2{color:var(--rice)}
+  .katas .head h2 em{color:var(--seal)}
+  .katas .head .index{color:var(--seal)}
+  .katas .head p.intro{color:rgba(241,235,220,.65)}
+  .katas .eyebrow{color:rgba(241,235,220,.7)}
+  .katas .eyebrow::before{background:var(--seal)}
+  .kata-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(241,235,220,.18)}
+  .kata{
+    padding:60px 48px;background:var(--ink);position:relative;overflow:hidden;
+    transition:background .35s;
+  }
+  .kata:hover{background:#161616}
+  .kata::before{
+    content:attr(data-ja);position:absolute;top:-30px;right:-10px;
+    font-family:'Noto Serif JP',serif;font-weight:700;font-size:16rem;line-height:.85;
+    color:rgba(241,235,220,.05);pointer-events:none;
+  }
+  .kata .ribbon{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);margin-bottom:18px;display:block;font-weight:500}
+  .kata h3{font-family:'EB Garamond',serif;font-weight:500;font-size:3rem;line-height:1;letter-spacing:-.02em;margin-bottom:8px}
+  .kata h3 em{font-style:italic;color:rgba(241,235,220,.6)}
+  .kata .romaji{font-family:'EB Garamond',serif;font-style:italic;color:var(--seal);font-size:1.1rem;margin-bottom:28px;display:block}
+  .kata p{color:rgba(241,235,220,.7);font-size:.98rem;max-width:42ch;margin-bottom:18px;line-height:1.7}
+  .kata dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:.9rem;margin-top:24px;border-top:1px solid rgba(241,235,220,.15);padding-top:22px}
+  .kata dt{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,220,.5);font-weight:500;align-self:center}
+  .kata dd{color:var(--rice);font-family:'EB Garamond',serif;font-style:italic;font-size:1rem}
+
+  /* ---------- LINAJE ---------- */
+  .linaje{background:var(--rice)}
+  .timeline-v{
+    display:grid;grid-template-columns:48px 1fr;gap:40px;align-items:start;
+    max-width:880px;margin:0 auto;
+  }
+  .timeline-v .axis{
+    border-left:1px solid var(--ink);height:100%;position:relative;
+  }
+  .hito{
+    padding:0 0 64px 32px;position:relative;border-left:1px solid var(--ink);
+  }
+  .hito::before{
+    content:"";position:absolute;left:-7px;top:6px;width:13px;height:13px;
+    background:var(--seal);border-radius:50%;
+  }
+  .hito:last-child{padding-bottom:0}
+  .hito .year{font-family:'EB Garamond',serif;font-weight:500;font-style:italic;font-size:2.4rem;color:var(--seal);line-height:1;display:block;margin-bottom:14px;letter-spacing:-.02em}
+  .hito h3{font-family:'EB Garamond',serif;font-weight:500;font-size:1.4rem;letter-spacing:-.01em;margin-bottom:8px}
+  .hito p{color:var(--ink-soft);font-size:1rem;max-width:54ch;line-height:1.65}
+
+  .akamine{
+    margin-top:100px;display:grid;grid-template-columns:.9fr 1.4fr;gap:64px;align-items:center;
+    padding-top:64px;border-top:1px solid rgba(10,10,10,.18);
+  }
+  .akamine .photo{aspect-ratio:3/4;background:var(--ink);overflow:hidden;position:relative}
+  .akamine .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1)}
+  .akamine .photo .hanko{position:absolute;bottom:20px;right:20px}
+  .akamine h3{font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(2rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+  .akamine h3 em{color:var(--seal)}
+  .akamine .dates{font-family:'EB Garamond',serif;font-style:italic;color:var(--ink-soft);font-size:1.05rem;margin-bottom:28px;display:block}
+  .akamine p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:14px;max-width:54ch;line-height:1.75}
+  .akamine blockquote{
+    font-family:'EB Garamond',serif;font-style:italic;font-size:1.5rem;line-height:1.35;
+    color:var(--ink);margin:32px 0 6px;padding-left:24px;border-left:2px solid var(--seal);
+    max-width:50ch;font-weight:400;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--rice-2);padding:160px 0;text-align:center;position:relative;overflow:hidden}
+  .cta::before{
+    content:"道";position:absolute;left:-40px;top:-40px;
+    font-family:'Noto Serif JP',serif;font-weight:700;font-size:32rem;line-height:.8;
+    color:var(--ink);opacity:.04;pointer-events:none;
+  }
+  .cta-inner{max-width:680px;margin:0 auto;padding:0 40px;position:relative}
+  .cta h2{font-size:clamp(2.4rem,5vw,4rem);color:var(--ink);margin:24px 0 24px}
+  .cta h2 em{color:var(--seal)}
+  .cta p.lead{font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ink-soft);margin-bottom:40px;line-height:1.5}
+  .form{
+    background:var(--rice);border:1px solid var(--ink);
+    padding:48px 44px;text-align:left;margin-top:40px;
+  }
+  .form h3{font-family:'EB Garamond',serif;font-weight:500;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:24px;text-align:center}
+  .field{margin-bottom:18px;display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .field input,.field select{
+    width:100%;padding:12px 0;font-size:1rem;font-family:'EB Garamond',serif;color:var(--ink);
+    background:transparent;border:0;border-bottom:1px solid var(--ink);outline:none;
+    transition:border-color .25s;
+  }
+  .field input:focus,.field select:focus{border-bottom-color:var(--seal)}
+  .form .btn{width:100%;justify-content:center;margin-top:14px;padding:15px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--rice);padding:80px 40px 32px;border-top:1px solid var(--ink)}
+  .foot-top{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(10,10,10,.18)}
+  .foot-brand{font-family:'EB Garamond',serif;font-weight:500;font-size:2.2rem;letter-spacing:-.02em;line-height:1;margin-bottom:14px}
+  .foot-brand em{color:var(--seal);font-style:italic}
+  .foot-top p{color:var(--ink-soft);font-size:.94rem;max-width:300px;line-height:1.7}
+  .foot-top h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:18px;font-weight:600}
+  .foot-top a,.foot-col p{display:block;padding:5px 0;color:var(--ink-soft);font-size:.94rem;transition:color .25s}
+  .foot-top a:hover{color:var(--seal)}
+  .foot-bottom{max-width:1240px;margin:24px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:var(--ink-soft);letter-spacing:.04em}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1000px){
+    header.nav{top:16px;width:calc(100% - 32px);padding:10px 18px;flex-wrap:wrap}
+    nav.menu{display:none;order:4;flex-basis:100%}
+    nav.menu.abierto{
+      display:block;margin-top:12px;padding-top:12px;
+      border-top:1px solid rgba(10,10,10,.12);
+    }
+    nav.menu.abierto ul{flex-direction:column;gap:2px}
+    nav.menu.abierto a{padding:10px 4px;display:block;font-size:.92rem}
+    .menu-toggle{display:inline-flex}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-tategaki{display:none}
+    .hero-foot{grid-template-columns:1fr 1fr}
+    .head{grid-template-columns:1fr;gap:18px}
+    .head .index{writing-mode:horizontal-tb;height:auto}
+    .scrolls{grid-template-columns:1fr;gap:60px}
+    .scrolls::before{display:none}
+    .scroll{padding:0}
+    .grid-pilares{grid-template-columns:repeat(2,1fr);gap:32px}
+    .fases{grid-template-columns:1fr}
+    .fase{border-right:0;border-bottom:1px solid rgba(10,10,10,.18)}
+    .fase:last-child{border-bottom:0}
+    .kata-grid{grid-template-columns:1fr}
+    .akamine{grid-template-columns:1fr;gap:40px}
+    .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#" class="logo">
+    <img src="../../resources/img/kazoku_small.jpg" alt="Dojo Kazoku" />
+    <span class="text">
+      <strong>Kazoku</strong>
+      <small>家族 · Ken Shin Kan</small>
+    </span>
+  </a>
+  <nav class="menu" id="navMenu">
+    <ul>
+      <li><a href="#espiritu">Espíritu</a></li>
+      <li><a href="#pilares">Pilares</a></li>
+      <li><a href="#clase">La clase</a></li>
+      <li><a href="#katas">Katas</a></li>
+      <li><a href="#linaje">Linaje</a></li>
+    </ul>
+  </nav>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="#contacto" class="btn">Reservar</a>
+    <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')" aria-label="Menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-tategaki tategaki">押忍 · 家族 · 道場 · 1968 — 2026</div>
+    <div class="hero-text">
+      <div class="eyebrow hero-eyebrow">Karate-Do · Ken Shin Kan · La Granja</div>
+      <h1 class="display">El <em class="brushed">camino</em><br>se entrena, no<br>se <em>aprende</em>. <span class="seal-inline jp" style="color:var(--seal)">道</span></h1>
+      <p class="lead">"La esencia del karate no radica en la victoria o la derrota, sino en la perfección del carácter." — Funakoshi</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn">Clase de prueba</a>
+        <a href="#espiritu" class="btn btn-ghost">Conocer la escuela</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=85" alt="Karateka" />
+      <span class="seal hanko jp">押</span>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div><span class="k">1968</span><span class="v">Linaje fundacional KSK</span></div>
+    <div><span class="k">家族</span><span class="v">Kazoku — familia que entrena</span></div>
+    <div><span class="k">$0</span><span class="v">Tu primera clase</span></div>
+  </div>
+</section>
+
+<!-- ESPÍRITU -->
+<section id="espiritu" class="espiritu">
+  <div class="container">
+    <div class="head">
+      <div class="index jp">第一章</div>
+      <div class="body">
+        <span class="eyebrow">i. — Espíritu Ken Shin Kan</span>
+        <h2 class="display">El <em>tigre</em> y el <em>águila</em>.</h2>
+        <p class="intro">A diferencia del Goju-ryu tradicional que se apoya en el oso y la grulla, el Ken Shin Kan reemplaza la simbología por dos animales que encarnan la dualidad fundacional de la escuela.</p>
+      </div>
+    </div>
+    <div class="scrolls">
+      <div class="scroll">
+        <span class="big-ja jp">虎</span>
+        <span class="roman">Ken</span>
+        <span class="anim">Tigre · Go · Dureza</span>
+        <h3>Fortaleza y agilidad.</h3>
+        <p>El cuerpo entrenado, los músculos forjados, la presencia firme. La dimensión Go — dura y enraizada como la tierra.</p>
+      </div>
+      <div class="scroll">
+        <span class="big-ja jp">鷲</span>
+        <span class="roman">Shin</span>
+        <span class="anim">Águila · Ju · Suavidad</span>
+        <h3>Velocidad e inteligencia.</h3>
+        <p>La mente clara, la vista que anticipa, los movimientos circulares como el batir de las alas. La dimensión Ju — suave y rítmica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" class="pilares">
+  <div class="container">
+    <div class="head">
+      <div class="index jp">第二章</div>
+      <div class="body">
+        <span class="eyebrow">ii. — Cuatro pilares</span>
+        <h2 class="display">Cuatro aspectos <em>esenciales</em>.</h2>
+        <p class="intro">Todo alumno del Ken Shin Kan cultiva cuatro aspectos que se sostienen mutuamente. Sin uno de ellos, los demás pierden sentido.</p>
+      </div>
+    </div>
+    <div class="grid-pilares">
+      <div class="pilar"><span class="stroke jp">眼</span><h3>Vista <em>· i.</em></h3><p>Leer la distancia, el ritmo y la intención.</p></div>
+      <div class="pilar"><span class="stroke jp">脚</span><h3>Piernas <em>· ii.</em></h3><p>La raíz. Desplazamiento y soporte de la técnica.</p></div>
+      <div class="pilar"><span class="stroke jp">勇</span><h3>Coraje <em>· iii.</em></h3><p>Decisión sin agresión. Espíritu bajo presión.</p></div>
+      <div class="pilar"><span class="stroke jp">力</span><h3>Fuerza <em>· iv.</em></h3><p>Energía dirigida. Articulada y consciente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASE -->
+<section id="clase" class="clase">
+  <div class="container">
+    <div class="head">
+      <div class="index jp">第三章</div>
+      <div class="body">
+        <span class="eyebrow">iii. — Anatomía de una clase</span>
+        <h2 class="display">60 minutos · <em>cuatro fases</em>.</h2>
+        <p class="intro">Estructura consolidada por el Sensei Akamine. Cada segmento de quince minutos cumple una función específica.</p>
+      </div>
+    </div>
+    <div class="fases">
+      <div class="fase"><span class="ja jp">静坐</span><span class="timecode">i. — 00:00 / 00:15</span><h3>Meditación</h3><p>Seiza, respiración consciente y movilidad articular.</p></div>
+      <div class="fase"><span class="ja jp">基本</span><span class="timecode">ii. — 00:15 / 00:30</span><h3>Técnica</h3><p>Kihon estático y en desplazamiento.</p></div>
+      <div class="fase"><span class="ja jp">型 ・ 組手</span><span class="timecode">iii. — 00:30 / 00:45</span><h3>Aplicación</h3><p>Kata, combate controlado o trabajo con armas.</p></div>
+      <div class="fase"><span class="ja jp">残心</span><span class="timecode">iv. — 00:45 / 01:00</span><h3>Cierre</h3><p>Estiramiento y regulación de la respiración.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KATAS -->
+<section id="katas" class="katas">
+  <div class="container">
+    <div class="head">
+      <div class="index jp" style="color:var(--seal)">第四章</div>
+      <div class="body">
+        <span class="eyebrow">iv. — Las formas</span>
+        <h2 class="display">Sanchin &amp; Tensho — <em>la dualidad</em>.</h2>
+        <p class="intro">Los katas son formas técnicas preestablecidas que despiertan el Ki — la energía interna. Se ejecutan con tensión controlada y son el corazón del entrenamiento avanzado.</p>
+      </div>
+    </div>
+    <div class="kata-grid">
+      <article class="kata" data-ja="三戦">
+        <span class="ribbon">Go · Ken · Tigre</span>
+        <h3>Sanchin <em>三戦</em></h3>
+        <span class="romaji">"Tres batallas"</span>
+        <p>Limpia los tres centros fundamentales — cerebro, corazón y estómago — fortaleciendo músculos y tendones a través de tensión sostenida.</p>
+        <dl>
+          <dt>Energía</dt><dd>Go — dureza</dd>
+          <dt>Respiración</dt><dd>Completa, en tres etapas</dd>
+          <dt>Origen</dt><dd>Taoísta · ~2000 a.C.</dd>
+        </dl>
+      </article>
+      <article class="kata" data-ja="転掌">
+        <span class="ribbon">Ju · Shin · Águila</span>
+        <h3>Tensho <em>転掌</em></h3>
+        <span class="romaji">"Manos cambiantes"</span>
+        <p>Movimientos circulares que imitan el batir de las alas de las aves. La contraparte fluida de Sanchin: lo mismo, en su forma suave.</p>
+        <dl>
+          <dt>Energía</dt><dd>Ju — suavidad</dd>
+          <dt>Respiración</dt><dd>Suave y rítmica</dd>
+          <dt>Origen</dt><dd>Chojun Miyagi · Hakutsuru</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LINAJE -->
+<section id="linaje" class="linaje">
+  <div class="container">
+    <div class="head">
+      <div class="index jp">第五章</div>
+      <div class="body">
+        <span class="eyebrow">v. — Linaje</span>
+        <h2 class="display">Una tradición <em>documentada</em>.</h2>
+        <p class="intro">Desde Naha hasta La Granja: el linaje del Ken Shin Kan está vivo, registrado y se transmite generación tras generación.</p>
+      </div>
+    </div>
+    <div class="timeline-v">
+      <div class="tategaki" style="color:var(--seal);height:480px">継承 · 道</div>
+      <div>
+        <div class="hito"><span class="year">1920</span><h3>Nace Sensei Akamine</h3><p>En Naha, Okinawa. Descendiente de una familia samurái.</p></div>
+        <div class="hito"><span class="year">1957</span><h3>Llegada a Brasil</h3><p>El Sensei Akamine se establece en Sudamérica e inicia la enseñanza.</p></div>
+        <div class="hito"><span class="year">1968</span><h3>Fundación oficial</h3><p>Se establece formalmente la escuela Ken Shin Kan.</p></div>
+        <div class="hito"><span class="year">1969</span><h3>Llegada a Chile</h3><p>A través de los hermanos Roberto y Raúl Fernández de la Reguera.</p></div>
+      </div>
+    </div>
+
+    <div class="akamine">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=85" alt="Sensei" />
+        <span class="seal hanko jp">赤</span>
+      </div>
+      <div>
+        <span class="eyebrow">El fundador</span>
+        <h3 class="display" style="margin-top:18px">Sensei Seiichi <em>Akamine</em></h3>
+        <span class="dates">1920 — 1995 · Naha, Okinawa</span>
+        <p>Descendiente de samuráis, el Sensei Akamine se formó en múltiples disciplinas marciales antes de consolidar el Ken Shin Kan: una síntesis del Goju-ryu con elementos del Bugeikan de Seitoku Higa, del Uechi-ryu, y del Judo y Jiu-jitsu — equilibrando manos y piernas en proporción 50/50.</p>
+        <blockquote>El objetivo no es vencer al otro, sino forjar un espíritu fuerte — duro y suave a la vez.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" class="cta">
+  <div class="cta-inner">
+    <span class="seal jp" style="margin-bottom:24px">押</span>
+    <h2 class="display">Tu primera clase es <em>gratis</em>.</h2>
+    <p class="lead">Sin compromiso. Solo trae ropa cómoda y muchas ganas. Te recibimos en el dojo con la atención de un sensei certificado.</p>
+    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+      <h3>Reserva tu clase</h3>
+      <div class="field"><label>Nombre</label><input type="text" required placeholder="Tu nombre" /></div>
+      <div class="field"><label>WhatsApp</label><input type="tel" required placeholder="+56 9 ..." /></div>
+      <div class="field"><label>Correo</label><input type="email" required placeholder="hola@email.com" /></div>
+      <div class="field"><label>Programa</label>
+        <select required>
+          <option value="">Selecciona</option>
+          <option>Niños (5–12)</option>
+          <option>Jóvenes / Adultos</option>
+          <option>Defensa personal</option>
+        </select>
+      </div>
+      <button type="submit" class="btn">Confirmar reserva</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">Dojo <em>Kazoku</em></div>
+      <p>Karate-Do Ken Shin Kan en La Granja, Santiago. Bajo el linaje del Sensei Seiichi Akamine.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Escuela</h4>
+      <a href="#espiritu">Espíritu</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#katas">Katas</a>
+      <a href="#linaje">Linaje</a>
+    </div>
+    <div class="foot-col">
+      <h4>Horarios</h4>
+      <p>Lun–Vie · 17:00 / 21:00</p>
+      <p>Sábados · 10:00 / 13:00</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <p>La Granja · Santiago</p>
+      <a href="tel:+56900000000">+56 9 0000 0000</a>
+      <a href="mailto:hola@dojokazoku.cl">hola@dojokazoku.cl</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Dojo Kazoku · KSK · La Granja</span>
+    <span class="jp" style="color:var(--seal)">押忍 · Osu</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target)}
+    });
+  },{threshold:.1,rootMargin:'-40px'});
+  document.querySelectorAll('.scroll,.pilar,.fase,.kata,.hito').forEach((el,i)=>{
+    el.style.opacity=0;el.style.transform='translateY(24px)';
+    el.style.transition='opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1)';
+    el.style.transitionDelay=(i%4)*90+'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
