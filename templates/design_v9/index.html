@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dojo Kazoku — Ken Shin Kan / Catálogo</title>
+<meta name="description" content="Dojo Kazoku · Ken Shin Kan · La Granja. Catálogo editorial de la escuela." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0;1,9..144,400..700,0&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fafaf7;
+    --paper-2:#f1efe7;
+    --concrete:#e1ddd5;
+    --ink:#0d0d0d;
+    --ink-soft:#525048;
+    --line:#0d0d0d;
+    --line-soft:#c4bfb3;
+    --red:#a80006;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    font-size:15px;line-height:1.55;color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:var(--paper)}
+
+  .serif{font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"SOFT" 0}
+  .display{font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"SOFT" 0;font-weight:500;line-height:.95;letter-spacing:-0.025em}
+  .display em{font-style:italic;font-weight:400}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* ---------- GRID OVERLAY (decorative) ---------- */
+  .grid-overlay{
+    position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.04) 1px, transparent 1px);
+    background-size:calc(100% / 12) 100%;
+    max-width:1320px;left:50%;transform:translateX(-50%);
+    margin:0 32px;
+  }
+
+  .container{max-width:1320px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+  /* ---------- TOP META ---------- */
+  .meta-top{
+    background:var(--ink);color:var(--paper);
+    padding:8px 0;font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;letter-spacing:.04em;
+  }
+  .meta-top-inner{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center;
+  }
+  .meta-top span{display:block}
+  .meta-top .m1{grid-column:span 3}
+  .meta-top .m2{grid-column:span 4}
+  .meta-top .m3{grid-column:span 2}
+  .meta-top .m4{grid-column:span 3;text-align:right;color:var(--red)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .nav-inner{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:stretch;
+  }
+  .logo{
+    grid-column:span 3;display:flex;align-items:center;gap:14px;
+    padding:18px 0;border-right:1px solid var(--line);padding-right:24px;
+  }
+  .logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .logo strong{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;letter-spacing:-.015em;display:block;line-height:1}
+  .logo small{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-top:4px;font-weight:500}
+  nav.menu{grid-column:span 7;display:flex;align-items:center;border-right:1px solid var(--line);padding-right:24px}
+  nav.menu ul{display:flex;list-style:none;width:100%;justify-content:space-between}
+  nav.menu a{
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+    letter-spacing:.04em;text-transform:lowercase;color:var(--ink);
+    transition:color .2s;
+  }
+  nav.menu a span{color:var(--red);margin-right:4px}
+  nav.menu a:hover{color:var(--red)}
+  .nav-cta{grid-column:span 2;display:flex;align-items:center;justify-content:flex-end}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;font-family:'IBM Plex Mono',monospace;
+    font-size:.76rem;font-weight:500;letter-spacing:.04em;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+    border-radius:0;cursor:pointer;transition:background .2s, color .2s;
+  }
+  .btn:hover{background:var(--red);border-color:var(--red)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-red{background:var(--red);color:var(--paper);border-color:var(--red)}
+  .btn-red:hover{background:var(--ink);border-color:var(--ink)}
+  .menu-toggle{
+    display:none;background:transparent;border:1px solid var(--line);
+    width:40px;height:40px;cursor:pointer;color:var(--ink);
+    align-items:center;justify-content:center;padding:0;
+    transition:background .2s, color .2s;
+  }
+  .menu-toggle:hover{background:var(--ink);color:var(--paper)}
+  .menu-toggle svg{width:18px;height:18px}
+
+  /* ---------- COLOPHON HEAD (Issue header) ---------- */
+  .colophon{
+    border-bottom:1px solid var(--line);padding:24px 0 18px;
+  }
+  .colophon-grid{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.04em;
+  }
+  .colophon-grid .item{display:flex;flex-direction:column;gap:6px}
+  .colophon-grid .item .k{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.12em}
+  .colophon-grid .item .v{color:var(--ink);font-weight:500}
+  .c-issue{grid-column:span 3}
+  .c-title{grid-column:span 5}
+  .c-date{grid-column:span 2}
+  .c-pages{grid-column:span 2;text-align:right}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    border-bottom:1px solid var(--line);padding:72px 0 80px;position:relative;
+  }
+  .hero-grid{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  }
+  .hero h1{
+    grid-column:span 12;
+    font-size:clamp(3.6rem,11vw,10rem);color:var(--ink);
+    margin-top:24px;
+  }
+  .hero h1 em{color:var(--red)}
+  .hero-bottom{
+    grid-column:span 12;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;
+  }
+  .hero-lead{grid-column:span 5}
+  .hero-lead p{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;line-height:1.4;color:var(--ink);max-width:42ch}
+  .hero-lead .ctas{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+  .hero-cite{grid-column:span 4;font-family:'IBM Plex Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--ink-soft)}
+  .hero-cite strong{color:var(--ink);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+  .hero-stats{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-left:1px solid var(--line);padding-left:24px}
+  .hero-stats div .k{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:2.4rem;line-height:1;letter-spacing:-.02em;color:var(--red);display:block}
+  .hero-stats div .v{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;display:block}
+
+  /* Sketched corners */
+  .marker{
+    position:absolute;width:14px;height:14px;color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:.7rem;
+    line-height:1;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:100px 0;border-bottom:1px solid var(--line);position:relative}
+  .sec-head{
+    max-width:1320px;margin:0 auto 60px;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;
+  }
+  .sec-num{
+    grid-column:span 2;font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+    letter-spacing:.1em;color:var(--red);text-transform:uppercase;font-weight:500;
+    padding-top:14px;border-top:1px solid var(--red);
+  }
+  .sec-title{grid-column:span 7}
+  .sec-title h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+  .sec-title h2 em{color:var(--red)}
+  .sec-intro{grid-column:span 3;font-size:.94rem;color:var(--ink-soft);max-width:34ch}
+
+  /* ---------- ESPÍRITU (Tigre/Águila as catalog entries) ---------- */
+  .espiritu{background:var(--paper)}
+  .duo{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  }
+  .duo-entry{
+    grid-column:span 6;border-top:1px solid var(--line);padding-top:32px;
+    display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:start;
+  }
+  .duo-entry .ja{
+    font-family:'Fraunces',serif;font-weight:500;font-size:7rem;line-height:.85;color:var(--ink);letter-spacing:-.02em;
+  }
+  .duo-entry .body{padding-top:8px}
+  .duo-entry .ribbon{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block;font-weight:500}
+  .duo-entry h3{font-family:'Fraunces',serif;font-weight:500;font-size:2rem;letter-spacing:-.015em;line-height:1.1;margin-bottom:14px}
+  .duo-entry h3 em{font-style:italic;color:var(--red)}
+  .duo-entry p{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px}
+  .duo-entry dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:.85rem;border-top:1px solid var(--line-soft);padding-top:14px;margin-top:14px}
+  .duo-entry dt{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .duo-entry dd{color:var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:1rem}
+
+  /* ---------- PILARES ---------- */
+  .pilares{background:var(--paper-2)}
+  .grid-pilares{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+    border-top:1px solid var(--line);
+  }
+  .pilar{
+    grid-column:span 3;padding:36px 24px 32px;
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    transition:background .3s;
+  }
+  .pilar:nth-child(4){border-right:0}
+  .pilar:hover{background:var(--paper)}
+  .pilar .index{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--red);margin-bottom:24px;display:flex;justify-content:space-between;font-weight:500}
+  .pilar .ja{font-family:'Fraunces',serif;font-weight:500;font-size:4rem;line-height:.9;color:var(--ink);margin-bottom:18px;display:block;letter-spacing:-.02em}
+  .pilar h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px}
+  .pilar h3 em{font-style:italic;color:var(--red)}
+  .pilar p{font-size:.88rem;color:var(--ink-soft)}
+
+  /* ---------- CLASE ---------- */
+  .clase{background:var(--paper)}
+  .timeline{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  }
+  .fase{
+    grid-column:span 3;border-top:1px solid var(--line);padding-top:24px;
+  }
+  .fase .id{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--red);font-weight:500;margin-bottom:16px;display:flex;justify-content:space-between}
+  .fase .timecode{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:1.8rem;color:var(--ink);margin-bottom:18px;display:block;letter-spacing:-.02em}
+  .fase .ja{font-family:'Fraunces',serif;font-weight:500;font-size:1.6rem;color:var(--red);margin-bottom:8px;display:block}
+  .fase h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;letter-spacing:-.01em;margin-bottom:8px;line-height:1.2}
+  .fase p{font-size:.88rem;color:var(--ink-soft)}
+
+  /* ---------- BENEFICIOS (catalog list) ---------- */
+  .beneficios{background:var(--paper-2)}
+  .list-ben{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    border-top:1px solid var(--line);
+  }
+  .row-ben{
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center;
+    padding:28px 0;border-bottom:1px solid var(--line-soft);
+    transition:background .25s;cursor:default;
+  }
+  .row-ben:hover{background:var(--paper)}
+  .row-ben:last-child{border-bottom:1px solid var(--line)}
+  .row-ben .idx{grid-column:span 1;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--red);font-weight:500;letter-spacing:.08em}
+  .row-ben .title{grid-column:span 4;font-family:'Fraunces',serif;font-weight:500;font-size:1.8rem;letter-spacing:-.015em;line-height:1.05}
+  .row-ben .title em{font-style:italic;color:var(--red)}
+  .row-ben .desc{grid-column:span 5;color:var(--ink-soft);font-size:.96rem;max-width:54ch}
+  .row-ben .tag{grid-column:span 2;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* ---------- KATAS ---------- */
+  .katas{background:var(--paper)}
+  .kata-grid{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  }
+  .kata{
+    grid-column:span 6;border-top:1px solid var(--line);padding:32px 0 0;position:relative;
+  }
+  .kata .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--red);font-weight:500}
+  .kata h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.2rem,3.4vw,3.4rem);line-height:1;letter-spacing:-.025em;margin-bottom:8px}
+  .kata h3 em{font-style:italic;color:var(--red);font-weight:500}
+  .kata .romaji{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:1.05rem;margin-bottom:24px;display:block}
+  .kata p{color:var(--ink-soft);font-size:.95rem;max-width:42ch;margin-bottom:18px}
+  .kata dl{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:.86rem;border-top:1px solid var(--line-soft);padding-top:18px;margin-top:18px}
+  .kata dt{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .kata dd{color:var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:1rem}
+
+  /* ---------- LINAJE ---------- */
+  .linaje{background:var(--paper-2);position:relative;overflow:hidden}
+  .timeline-h{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+    border-top:1px solid var(--line);
+  }
+  .hito{
+    grid-column:span 3;padding:28px 24px 28px 0;border-right:1px solid var(--line);
+    transition:background .3s;
+  }
+  .hito:last-child{border-right:0}
+  .hito:hover{background:var(--paper)}
+  .hito .id{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--red);font-weight:500;margin-bottom:16px;display:block}
+  .hito .year{font-family:'Fraunces',serif;font-weight:500;font-size:3.2rem;color:var(--ink);line-height:1;letter-spacing:-.025em;display:block;margin-bottom:14px}
+  .hito h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;letter-spacing:-.01em;margin-bottom:6px;line-height:1.15}
+  .hito h3 em{font-style:italic;color:var(--red)}
+  .hito p{font-size:.88rem;color:var(--ink-soft)}
+
+  .akamine{
+    max-width:1320px;margin:80px auto 0;padding:60px 32px 0;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+    border-top:1px solid var(--line);
+  }
+  .akamine .meta{grid-column:span 2;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--red);font-weight:500;border-top:1px solid var(--red);padding-top:14px}
+  .akamine .photo{grid-column:span 4;aspect-ratio:3/4;background:var(--ink);overflow:hidden}
+  .akamine .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1)}
+  .akamine .body{grid-column:span 6;padding-top:14px;border-top:1px solid var(--line)}
+  .akamine h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2rem,3vw,2.8rem);letter-spacing:-.025em;line-height:1.05;margin-bottom:10px}
+  .akamine h3 em{font-style:italic;color:var(--red)}
+  .akamine .dates{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px;display:block}
+  .akamine p{color:var(--ink-soft);font-size:.98rem;margin-bottom:14px;max-width:54ch;line-height:1.7}
+  .akamine blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;line-height:1.35;color:var(--ink);margin:24px 0 6px;padding-left:20px;border-left:2px solid var(--red);max-width:50ch;font-weight:500}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--paper)}
+  .cta-grid{
+    max-width:1320px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;
+  }
+  .cta-text{grid-column:span 7;border-top:1px solid var(--line);padding-top:32px}
+  .cta-text h2{font-size:clamp(2.4rem,5vw,4.4rem);margin-bottom:24px}
+  .cta-text h2 em{color:var(--red)}
+  .cta-text p.lead{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:32px;max-width:48ch;line-height:1.4}
+  .cta-feat{list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--line-soft)}
+  .cta-feat li{padding:14px 0;display:flex;gap:16px;border-bottom:1px solid var(--line-soft);font-size:.95rem;align-items:center}
+  .cta-feat li .n{font-family:'IBM Plex Mono',monospace;color:var(--red);font-size:.75rem;letter-spacing:.08em;font-weight:500;min-width:36px}
+
+  .form{
+    grid-column:span 5;background:var(--paper-2);
+    border:1px solid var(--line);padding:40px 36px;
+  }
+  .form h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.6rem;letter-spacing:-.015em;margin-bottom:6px}
+  .form .sub{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:28px;font-weight:500}
+  .field{margin-bottom:18px;display:flex;flex-direction:column;gap:6px}
+  .field label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:500}
+  .field input,.field select{
+    width:100%;padding:12px 0;font-size:1rem;font-family:'Fraunces',serif;color:var(--ink);
+    background:transparent;border:0;border-bottom:1px solid var(--line);outline:none;
+    transition:border-color .25s;
+  }
+  .field input:focus,.field select:focus{border-bottom-color:var(--red)}
+  .form .btn{width:100%;justify-content:center;margin-top:8px;padding:14px;background:var(--red);border-color:var(--red)}
+  .form .btn:hover{background:var(--ink);border-color:var(--ink)}
+
+  /* ---------- FOOTER (Colophon) ---------- */
+  footer{background:var(--ink);color:var(--paper);padding:0;border-top:1px solid var(--ink)}
+  .foot-mast{
+    max-width:1320px;margin:0 auto;padding:32px 32px 0;
+    border-bottom:1px solid rgba(250,250,247,.15);padding-bottom:32px;
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;
+  }
+  .foot-mast .brand{grid-column:span 6;font-family:'Fraunces',serif;font-weight:500;font-size:3.4rem;line-height:1;letter-spacing:-.025em;color:var(--paper);text-transform:none}
+  .foot-mast .brand em{color:var(--red);font-style:italic}
+  .foot-mast .info{grid-column:span 3;color:rgba(250,250,247,.7)}
+  .foot-mast .info strong{color:var(--paper);display:block;margin-bottom:4px;font-weight:500;text-transform:uppercase}
+  .foot-mast .info-r{text-align:right}
+
+  .foot-cols{
+    max-width:1320px;margin:0 auto;padding:48px 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  }
+  .foot-cols h4{grid-column:span 12;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:14px;font-weight:500}
+  .foot-cols .col{grid-column:span 3}
+  .foot-cols .col h5{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.5);margin-bottom:14px;font-weight:500}
+  .foot-cols a,.foot-cols p{display:block;padding:4px 0;color:rgba(250,250,247,.75);font-size:.92rem;transition:color .2s}
+  .foot-cols a:hover{color:var(--red)}
+  .foot-end{
+    max-width:1320px;margin:0 auto;padding:18px 32px;
+    border-top:1px solid rgba(250,250,247,.15);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(250,250,247,.5);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1000px){
+    .grid-overlay{display:none}
+    .meta-top-inner span{grid-column:span 12}
+    .nav-inner{grid-template-columns:1fr auto;gap:14px}
+    .logo{grid-column:auto;border-right:0;padding-right:0}
+    nav.menu{display:none;grid-column:1/-1;border-right:0;padding:0;order:5}
+    nav.menu.abierto{display:flex;border-top:1px solid var(--line);padding-top:12px}
+    nav.menu.abierto ul{flex-direction:column;gap:0;width:100%}
+    nav.menu.abierto a{padding:12px 4px;width:100%;border-bottom:1px solid var(--line-soft)}
+    .nav-cta{grid-column:auto;gap:10px}
+    .menu-toggle{display:inline-flex}
+    .colophon-grid > *{grid-column:span 12}
+    .sec-head > *,.duo > *,.timeline > *,.kata-grid > *,.timeline-h > *,.cta-grid > *,.akamine > *,.hero-bottom > *,.foot-mast > *,.foot-cols .col,.hero-grid > *{grid-column:span 12 !important}
+    .hero h1{font-size:3.5rem}
+    .duo-entry{grid-template-columns:1fr;border-top:1px solid var(--line)}
+    .duo-entry .ja{font-size:5rem}
+    .row-ben{padding:18px 0}
+    .row-ben .idx,.row-ben .title,.row-ben .desc,.row-ben .tag{grid-column:span 12;text-align:left}
+    .akamine{margin-top:48px;padding:32px 32px 0}
+    .akamine .photo{aspect-ratio:5/4}
+    .form{padding:32px 24px}
+    .pilar,.fase,.hito{border-right:0 !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<!-- META TOP -->
+<div class="meta-top">
+  <div class="meta-top-inner">
+    <span class="m1">[ DOJO KAZOKU / KSK ]</span>
+    <span class="m2">LA GRANJA · SANTIAGO · CHILE</span>
+    <span class="m3">EST. 1968</span>
+    <span class="m4">押忍 · OSU</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="../../resources/img/kazoku_small.jpg" alt="Kazoku" />
+      <div>
+        <strong>Kazoku</strong>
+        <small>KSK · Catálogo</small>
+      </div>
+    </a>
+    <nav class="menu" id="navMenu">
+      <ul>
+        <li><a href="#espiritu"><span>01</span> Espíritu</a></li>
+        <li><a href="#pilares"><span>02</span> Pilares</a></li>
+        <li><a href="#clase"><span>03</span> Clase</a></li>
+        <li><a href="#beneficios"><span>04</span> Beneficios</a></li>
+        <li><a href="#katas"><span>05</span> Katas</a></li>
+        <li><a href="#linaje"><span>06</span> Linaje</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta" style="display:flex;gap:10px;align-items:center">
+      <a href="#contacto" class="btn btn-red">Clase / $0</a>
+      <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <div class="colophon-grid">
+    <div class="item c-issue"><span class="k">// Issue</span><span class="v">N.º 03 / Catálogo de la escuela</span></div>
+    <div class="item c-title"><span class="k">// Title</span><span class="v">Dojo Kazoku — Manual de la práctica Ken Shin Kan</span></div>
+    <div class="item c-date"><span class="k">// Fecha</span><span class="v">2026</span></div>
+    <div class="item c-pages"><span class="k">// Páginas</span><span class="v">A.001 — A.099</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <h1 class="display">El <em>camino</em> se entrena, no se aprende.</h1>
+    <div class="hero-bottom">
+      <div class="hero-lead">
+        <p>Dojo Kazoku — Karate Ken Shin Kan en La Granja. Bajo el linaje del Sensei Akamine. Tigre y águila. Duro y suave a la vez.</p>
+        <div class="ctas">
+          <a href="#contacto" class="btn btn-red">Reservar clase gratis</a>
+          <a href="#espiritu" class="btn btn-ghost">Leer el manual</a>
+        </div>
+      </div>
+      <div class="hero-cite">
+        <strong>// Cita fundacional</strong>
+        "La esencia del karate no radica en la victoria o la derrota, sino en la perfección del carácter." — Gichin Funakoshi
+      </div>
+      <div class="hero-stats">
+        <div><span class="k">20+</span><span class="v">Años · linaje</span></div>
+        <div><span class="k">300+</span><span class="v">Karatekas</span></div>
+        <div><span class="k">1968</span><span class="v">Fundación KSK</span></div>
+        <div><span class="k">4/4</span><span class="v">Pilares</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPÍRITU -->
+<section id="espiritu" class="espiritu">
+  <div class="sec-head">
+    <div class="sec-num">§ 01 — Espíritu</div>
+    <div class="sec-title"><h2 class="display">El tigre y el <em>águila</em>.</h2></div>
+    <p class="sec-intro">A diferencia del Goju-ryu (oso y grulla), el Ken Shin Kan reemplaza la simbología por dos animales que encarnan la dualidad fundacional.</p>
+  </div>
+  <div class="duo">
+    <div class="duo-entry">
+      <span class="ja serif">虎</span>
+      <div class="body">
+        <span class="ribbon">// A.01 — Ken · Go · Dureza</span>
+        <h3>Fortaleza y <em>agilidad</em>.</h3>
+        <p>El cuerpo entrenado, los músculos forjados, la presencia firme sobre el tatami. Dimensión Go — dura, enraizada.</p>
+        <dl>
+          <dt>Energía</dt><dd>Go — dureza</dd>
+          <dt>Kata</dt><dd>Sanchin · 三戦</dd>
+          <dt>Respiración</dt><dd>Completa, en 3 etapas</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="duo-entry">
+      <span class="ja serif">鷲</span>
+      <div class="body">
+        <span class="ribbon">// A.02 — Shin · Ju · Suavidad</span>
+        <h3>Velocidad e <em>inteligencia</em>.</h3>
+        <p>La vista que anticipa, los movimientos circulares como el batir de las alas. Dimensión Ju — suave, rítmica.</p>
+        <dl>
+          <dt>Energía</dt><dd>Ju — suavidad</dd>
+          <dt>Kata</dt><dd>Tensho · 転掌</dd>
+          <dt>Respiración</dt><dd>Suave y rítmica</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" class="pilares">
+  <div class="sec-head">
+    <div class="sec-num">§ 02 — Pilares</div>
+    <div class="sec-title"><h2 class="display">Cuatro aspectos <em>esenciales</em>.</h2></div>
+    <p class="sec-intro">Todo alumno cultiva cuatro aspectos que se sostienen mutuamente. Sin uno de ellos, los demás pierden sentido.</p>
+  </div>
+  <div class="grid-pilares">
+    <div class="pilar"><div class="index"><span>// B.01</span><span>i.</span></div><span class="ja serif">眼</span><h3>Vista <em>—</em></h3><p>Leer la distancia, el ritmo y la intención.</p></div>
+    <div class="pilar"><div class="index"><span>// B.02</span><span>ii.</span></div><span class="ja serif">脚</span><h3>Piernas <em>—</em></h3><p>La raíz. Desplazamiento y soporte de la técnica.</p></div>
+    <div class="pilar"><div class="index"><span>// B.03</span><span>iii.</span></div><span class="ja serif">勇</span><h3>Coraje <em>—</em></h3><p>Decisión sin agresión. Espíritu bajo presión.</p></div>
+    <div class="pilar"><div class="index"><span>// B.04</span><span>iv.</span></div><span class="ja serif">力</span><h3>Fuerza <em>—</em></h3><p>Energía dirigida. Articulada y consciente.</p></div>
+  </div>
+</section>
+
+<!-- CLASE -->
+<section id="clase" class="clase">
+  <div class="sec-head">
+    <div class="sec-num">§ 03 — La clase</div>
+    <div class="sec-title"><h2 class="display">60 minutos · <em>cuatro fases</em>.</h2></div>
+    <p class="sec-intro">Estructura consolidada por el Sensei Akamine. Cada segmento de quince minutos cumple una función específica.</p>
+  </div>
+  <div class="timeline">
+    <div class="fase"><div class="id"><span>// C.01</span><span>i.</span></div><span class="timecode">00:00 → 00:15</span><span class="ja">静坐</span><h3>Meditación &amp; calentamiento</h3><p>Seiza, respiración consciente, movilidad articular.</p></div>
+    <div class="fase"><div class="id"><span>// C.02</span><span>ii.</span></div><span class="timecode">00:15 → 00:30</span><span class="ja">基本</span><h3>Técnica &amp; desplazamiento</h3><p>Kihon estático y en desplazamiento.</p></div>
+    <div class="fase"><div class="id"><span>// C.03</span><span>iii.</span></div><span class="timecode">00:30 → 00:45</span><span class="ja">型・組手</span><h3>Aplicación</h3><p>Kata, kumite o kobudo.</p></div>
+    <div class="fase"><div class="id"><span>// C.04</span><span>iv.</span></div><span class="timecode">00:45 → 01:00</span><span class="ja">残心</span><h3>Vuelta a la calma</h3><p>Estiramiento, respiración, cierre con zanshin.</p></div>
+  </div>
+</section>
+
+<!-- BENEFICIOS (catalog list) -->
+<section id="beneficios" class="beneficios">
+  <div class="sec-head">
+    <div class="sec-num">§ 04 — Beneficios</div>
+    <div class="sec-title"><h2 class="display">Lo que se <em>nota</em> fuera del tatami.</h2></div>
+    <p class="sec-intro">Seis frentes simultáneos. Sin magia: consistencia. La mejora se hace visible dentro y fuera del dojo.</p>
+  </div>
+  <div class="list-ben">
+    <div class="row-ben"><span class="idx">// D.01</span><span class="title">Salud <em>física</em></span><span class="desc">Fuerza estructural, resistencia y flexibilidad funcional desde la primera clase.</span><span class="tag">— Cuerpo</span></div>
+    <div class="row-ben"><span class="idx">// D.02</span><span class="title">Reducción del <em>estrés</em></span><span class="desc">Foco, respiración consciente y claridad emocional sostenida.</span><span class="tag">— Mente</span></div>
+    <div class="row-ben"><span class="idx">// D.03</span><span class="title">Confianza <em>medible</em></span><span class="desc">Cada cinturón es una victoria personal real y celebrable.</span><span class="tag">— Identidad</span></div>
+    <div class="row-ben"><span class="idx">// D.04</span><span class="title">Disciplina <em>trasladable</em></span><span class="desc">Costumbres del dojo que se replican en colegio, trabajo y hogar.</span><span class="tag">— Hábito</span></div>
+    <div class="row-ben"><span class="idx">// D.05</span><span class="title">Comunidad <em>(kazoku)</em></span><span class="desc">Una familia que sostiene tu progreso clase tras clase.</span><span class="tag">— Familia</span></div>
+    <div class="row-ben"><span class="idx">// D.06</span><span class="title">Espíritu <em>fuerte</em></span><span class="desc">Duro y suave a la vez. La esencia del Ken Shin Kan en una persona.</span><span class="tag">— Carácter</span></div>
+  </div>
+</section>
+
+<!-- KATAS -->
+<section id="katas" class="katas">
+  <div class="sec-head">
+    <div class="sec-num">§ 05 — Las formas</div>
+    <div class="sec-title"><h2 class="display">Sanchin &amp; Tensho — <em>la dualidad</em>.</h2></div>
+    <p class="sec-intro">Formas técnicas preestablecidas que despiertan el Ki. Tensión controlada. Corazón del entrenamiento avanzado.</p>
+  </div>
+  <div class="kata-grid">
+    <article class="kata">
+      <div class="top"><span>// E.01 — Kata fundacional</span><span>Go · Ken · Tigre</span></div>
+      <h3>Sanchin <em>· 三戦</em></h3>
+      <span class="romaji">"Tres batallas"</span>
+      <p>Limpia los tres centros fundamentales — cerebro, corazón y estómago — fortaleciendo músculos y tendones mediante tensión sostenida.</p>
+      <dl>
+        <dt>Energía</dt><dd>Go — dureza</dd>
+        <dt>Respiración</dt><dd>Completa, en tres etapas</dd>
+        <dt>Origen</dt><dd>Taoísta · ~2000 a.C.</dd>
+      </dl>
+    </article>
+    <article class="kata">
+      <div class="top"><span>// E.02 — Kata fundacional</span><span>Ju · Shin · Águila</span></div>
+      <h3>Tensho <em>· 転掌</em></h3>
+      <span class="romaji">"Manos cambiantes"</span>
+      <p>Movimientos circulares que imitan el batir de las alas de las aves. La contraparte fluida de Sanchin: lo mismo, en su forma suave.</p>
+      <dl>
+        <dt>Energía</dt><dd>Ju — suavidad</dd>
+        <dt>Respiración</dt><dd>Suave y rítmica</dd>
+        <dt>Origen</dt><dd>Chojun Miyagi · Hakutsuru</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<!-- LINAJE -->
+<section id="linaje" class="linaje">
+  <div class="sec-head">
+    <div class="sec-num">§ 06 — Linaje</div>
+    <div class="sec-title"><h2 class="display">Una tradición <em>documentada</em>.</h2></div>
+    <p class="sec-intro">Desde Naha hasta La Granja: el linaje del Ken Shin Kan está vivo, registrado y se transmite generación tras generación.</p>
+  </div>
+  <div class="timeline-h">
+    <div class="hito"><span class="id">// F.01</span><span class="year">1920</span><h3>Nace Sensei <em>Akamine</em></h3><p>En Naha, Okinawa. Descendiente de samuráis.</p></div>
+    <div class="hito"><span class="id">// F.02</span><span class="year">1957</span><h3>Llegada a <em>Brasil</em></h3><p>Se establece en Sudamérica.</p></div>
+    <div class="hito"><span class="id">// F.03</span><span class="year">1968</span><h3>Fundación <em>oficial</em></h3><p>Se establece formalmente la escuela KSK.</p></div>
+    <div class="hito"><span class="id">// F.04</span><span class="year">1969</span><h3>Llegada a <em>Chile</em></h3><p>Hermanos Roberto y Raúl Fernández de la Reguera.</p></div>
+  </div>
+
+  <div class="akamine">
+    <div class="meta">// G.01 — Bio.<br>Fundador.</div>
+    <div class="photo"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=85" alt="Sensei" /></div>
+    <div class="body">
+      <h3 class="display">Sensei Seiichi <em>Akamine</em></h3>
+      <span class="dates">// 1920 — 1995 · Naha, Okinawa</span>
+      <p>Descendiente de samuráis, el Sensei Akamine se formó en múltiples disciplinas marciales antes de consolidar el Ken Shin Kan: una síntesis del Goju-ryu con elementos del Bugeikan (Seitoku Higa), del Uechi-ryu (Kanbun Uechi), y del Judo y Jiu-jitsu — equilibrando manos y piernas en proporción 50/50.</p>
+      <p>Su llegada a Brasil en 1957 marcó el inicio de la expansión sudamericana. La escuela tomó forma oficial en 1968 y un año después cruzó la cordillera hacia Chile.</p>
+      <blockquote>"El objetivo no es vencer al otro, sino forjar un espíritu fuerte — duro y suave a la vez."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" class="cta">
+  <div class="sec-head">
+    <div class="sec-num">§ 07 — Reserva</div>
+    <div class="sec-title"><h2 class="display">Tu primera clase es <em>gratis</em>.</h2></div>
+    <p class="sec-intro">Sin compromiso. Solo trae ropa cómoda y muchas ganas. Te recibimos en el dojo con la atención de un sensei certificado.</p>
+  </div>
+  <div class="cta-grid">
+    <div class="cta-text">
+      <p class="lead">Una primera clase basta para entender por qué el Ken Shin Kan no se parece a otras escuelas. Llega, observa, prueba — y decide.</p>
+      <ul class="cta-feat">
+        <li><span class="n">// 01</span> Reserva online y seguimiento de cinturones</li>
+        <li><span class="n">// 02</span> Pagos automatizados y facturación digital</li>
+        <li><span class="n">// 03</span> Ambiente limpio, profesional y familiar</li>
+        <li><span class="n">// 04</span> Linaje documentado del Sensei Akamine</li>
+        <li><span class="n">// 05</span> Programas separados por edad y nivel</li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+      <h3>Reserva tu clase</h3>
+      <p class="sub">// Te confirmamos por WhatsApp el mismo día</p>
+      <div class="field"><label>Nombre completo</label><input type="text" required placeholder="Tu nombre" /></div>
+      <div class="field"><label>WhatsApp</label><input type="tel" required placeholder="+56 9 ..." /></div>
+      <div class="field"><label>Correo</label><input type="email" required placeholder="hola@email.com" /></div>
+      <div class="field"><label>Programa</label>
+        <select required>
+          <option value="">Selecciona</option>
+          <option>Niños (5–12)</option>
+          <option>Jóvenes / Adultos</option>
+          <option>Defensa personal</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-red">Confirmar reserva →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER COLOPHON -->
+<footer>
+  <div class="foot-mast">
+    <div class="brand">Dojo <em>Kazoku</em>.</div>
+    <div class="info"><strong>// Edición</strong>N.º 03 / 2026 · Catálogo de la escuela</div>
+    <div class="info info-r"><strong>// Linaje</strong>Ken Shin Kan · Akamine · est. 1968</div>
+  </div>
+  <div class="foot-cols">
+    <h4>// Índice general</h4>
+    <div class="col"><h5>Escuela</h5><a href="#espiritu">§ 01 — Espíritu</a><a href="#pilares">§ 02 — Pilares</a><a href="#clase">§ 03 — Clase</a></div>
+    <div class="col"><h5>Práctica</h5><a href="#beneficios">§ 04 — Beneficios</a><a href="#katas">§ 05 — Katas</a><a href="#linaje">§ 06 — Linaje</a></div>
+    <div class="col"><h5>Horarios</h5><p>Lun–Vie · 17:00 / 21:00</p><p>Sábados · 10:00 / 13:00</p><p>Domingos · cerrado</p></div>
+    <div class="col"><h5>Contacto</h5><p>La Granja · Santiago</p><a href="tel:+56900000000">+56 9 0000 0000</a><a href="mailto:hola@dojokazoku.cl">hola@dojokazoku.cl</a></div>
+  </div>
+  <div class="foot-end">
+    <span>© 2026 Dojo Kazoku · KSK · La Granja, Santiago</span>
+    <span>// Set en Fraunces + IBM Plex · 押忍 · OSU</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target)}
+    });
+  },{threshold:.1,rootMargin:'-40px'});
+  document.querySelectorAll('.duo-entry,.pilar,.fase,.row-ben,.kata,.hito').forEach((el,i)=>{
+    el.style.opacity=0;el.style.transform='translateY(20px)';
+    el.style.transition='opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)';
+    el.style.transitionDelay=(i%5)*60+'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
