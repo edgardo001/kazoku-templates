@@ -180,7 +180,7 @@
         <li><a href="#galeria">Galería</a></li>
       </ul>
     </nav>
-    <a href="#contacto" class="btn btn-primary">Clase de prueba</a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-primary">Clase de prueba</a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
   </div>
 </header>
@@ -192,7 +192,7 @@
       <h1>La perfección del <em>carácter</em><br>comienza en el <em>tatami</em>.</h1>
       <p class="lead">Más que herramientas para enfrentar la vida: una inversión en disciplina, salud y confianza. Una familia (家族) que entrena con respeto, claridad y propósito.</p>
       <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-primary">Reservar clase gratis</a>
+        <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-primary">Reservar clase gratis</a>
         <a href="#beneficios" class="btn btn-ghost">Conocer la escuela</a>
       </div>
       <div class="hero-meta">
@@ -358,7 +358,7 @@
         <li>Atención personalizada desde el primer kiai</li>
       </ul>
     </div>
-    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <h3>Reserva tu clase</h3>
       <div class="field"><label>Nombre completo</label><input type="text" required /></div>
       <div class="field"><label>Teléfono / WhatsApp</label><input type="tel" required /></div>

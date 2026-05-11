@@ -518,7 +518,7 @@
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
-    <a href="#contacto" class="btn">Reservar →</a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn">Reservar →</a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')" aria-label="Menú">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
     </button>
@@ -539,7 +539,7 @@
       <div class="cast-item"><span class="role">Sede</span><span class="name">La Granja · Santiago</span></div>
     </div>
     <div class="hero-ctas">
-      <a href="#contacto" class="btn btn-gold">Reserva clase gratis →</a>
+      <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-gold">Reserva clase gratis →</a>
       <a href="#espiritu" class="btn btn-ghost">Conocer la escuela</a>
     </div>
     <div class="scroll-cue">Scroll · Conoce la escuela</div>
@@ -756,7 +756,7 @@
         <li><span class="n">// 04</span> Linaje documentado del Sensei Akamine</li>
       </ul>
     </div>
-    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <h3>Reserva tu clase</h3>
       <p class="sub">// Te confirmamos por WhatsApp el mismo día</p>
       <div class="field"><label>Nombre completo</label><input type="text" required placeholder="Tu nombre" /></div>
@@ -781,7 +781,7 @@
     <span class="label">— Bienvenido a la familia —</span>
     <div class="end-brand">Dojo <em>Kazoku</em>.</div>
     <p class="end-tag">"Una familia que entrena junta." — KSK · La Granja</p>
-    <a href="#contacto" class="btn btn-gold">Reserva tu primera clase →</a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-gold">Reserva tu primera clase →</a>
   </div>
   <div class="credits-grid">
     <div>

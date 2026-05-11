@@ -244,7 +244,7 @@
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-    <a href="#contacto" class="btn">Clase Gratis</a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn">Clase Gratis</a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
   </div>
 </header>
@@ -259,7 +259,7 @@
       <h1 style="margin-top:1.5rem">Forja tu <em>carácter</em>, <br>cultiva tu <em>bienestar</em>.</h1>
       <p class="lead">El karate no es solo herramientas para enfrentar la vida: es una inversión en disciplina, confianza y salud para toda la vida. Bienvenido a la familia Kazoku.</p>
       <div class="hero-ctas">
-        <a href="#contacto" class="btn">🥋 Reserva tu clase de prueba GRATIS</a>
+        <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn">🥋 Reserva tu clase de prueba GRATIS</a>
         <a href="#beneficios" class="btn btn-amarillo">Conocer más</a>
       </div>
     </div>
@@ -370,7 +370,7 @@
   <div class="container">
     <h2>¿Listo para empezar?</h2>
     <p>Reserva tu clase de prueba <strong>GRATIS</strong>. Sin compromiso. Solo trae ropa cómoda y muchas ganas.</p>
-    <form class="form-rapido" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form-rapido" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <input type="text" placeholder="Nombre completo" required />
       <input type="tel" placeholder="Teléfono / WhatsApp" required />
       <input type="email" placeholder="Correo electrónico" required />

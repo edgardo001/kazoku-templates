@@ -293,7 +293,7 @@
         <li><a href="#galeria">Galería</a></li>
       </ul>
     </nav>
-    <a href="#contacto" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
   </div>
 </header>
@@ -315,7 +315,7 @@
       </h1>
       <p class="lead">Karate Goju-Ryu estilo Ken Shin Kan para <strong>niños, jóvenes y adultos</strong>. Más que herramientas para enfrentar la vida: una práctica viva que cultiva disciplina, salud y confianza.</p>
       <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-red">Reservar clase gratis <span class="arr">→</span></a>
+        <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-red">Reservar clase gratis <span class="arr">→</span></a>
         <a href="#beneficios" class="btn">Conocer la escuela</a>
       </div>
       <div class="hero-meta">
@@ -366,7 +366,7 @@
       <div class="card-ben"><span class="num">05</span><h3>Comunidad</h3><p>Una familia (kazoku) que apoya tu progreso.</p></div>
       <div class="card-ben"><span class="num">06</span><h3>Herramientas para enfrentar la vida</h3><p>Herramientas reales para responder con calma.</p></div>
       <div class="card-ben"><span class="num">07</span><h3>Carácter</h3><p>La esencia del karate: ser mejor cada día.</p></div>
-      <a href="#contacto" class="card-ben cta-card">
+      <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="card-ben cta-card">
         <div>
           <span class="eyebrow" style="color:rgba(255,255,255,.7)">Empieza hoy</span>
           <h3 style="margin-top:14px">Reserva tu prueba gratis.</h3>
@@ -512,7 +512,7 @@
         <li>Ambiente familiar, limpio y profesional</li>
       </ul>
     </div>
-    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <h3>Reserva tu clase</h3>
       <p class="sub">Te confirmamos por WhatsApp el mismo día.</p>
       <div class="field"><label>Nombre completo</label><input type="text" required placeholder="Tu nombre" /></div>
