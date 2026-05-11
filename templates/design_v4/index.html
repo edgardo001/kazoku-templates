@@ -480,7 +480,7 @@
         <li><a href="#galeria">Galería</a></li>
       </ul>
     </nav>
-    <a href="#contacto" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
   </div>
 </header>
@@ -503,7 +503,7 @@
       <div>
         <p class="lead">Karate Goju-Ryu estilo Ken Shin Kan para niños, jóvenes y adultos. Una práctica viva que cultiva disciplina, salud y confianza — bajo el linaje del Maestro Seiichi Akamine.</p>
         <div class="hero-ctas">
-          <a href="#contacto" class="btn btn-red">Reservar clase gratis <span class="arr">→</span></a>
+          <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn btn-red">Reservar clase gratis <span class="arr">→</span></a>
           <a href="#segmentos" class="btn btn-ghost-light">Ver programas</a>
         </div>
       </div>
@@ -749,7 +749,7 @@
         <li><span class="n">03</span> Ambiente limpio, profesional y familiar</li>
       </ul>
     </div>
-    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <h3>Reserva tu clase</h3>
       <p class="sub">Te confirmamos por WhatsApp el mismo día.</p>
       <div class="field"><label>Nombre completo</label><input type="text" required placeholder="Tu nombre" /></div>

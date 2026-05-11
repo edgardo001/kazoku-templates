@@ -423,7 +423,7 @@
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     </button>
-    <a href="#contacto" class="btn">Reservar</a>
+    <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn">Reservar</a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')" aria-label="Menú">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
     </button>
@@ -439,7 +439,7 @@
       <h1 class="display">El <em class="brushed">camino</em><br>se entrena, no<br>se <em>aprende</em>. <span class="seal-inline jp" style="color:var(--seal)">道</span></h1>
       <p class="lead">"La esencia del karate no radica en la victoria o la derrota, sino en la perfección del carácter." — Funakoshi</p>
       <div class="hero-ctas">
-        <a href="#contacto" class="btn">Clase de prueba</a>
+        <a href="https://wa.me/56900000000?text=Hola,%20me%20gustaría%20reservar%20una%20clase%20gratis%20en%20Dojo%20Kazoku." target="_blank" class="btn">Clase de prueba</a>
         <a href="#espiritu" class="btn btn-ghost">Conocer la escuela</a>
       </div>
     </div>
@@ -606,7 +606,7 @@
     <span class="seal jp" style="margin-bottom:24px">押</span>
     <h2 class="display">Tu primera clase es <em>gratis</em>.</h2>
     <p class="lead">Sin compromiso. Solo trae ropa cómoda y muchas ganas. Te recibimos en el dojo con la atención de un sensei certificado.</p>
-    <form class="form" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaremos pronto.');">
+    <form class="form" onsubmit="event.preventDefault(); const name = this.querySelector('input[type=text]').value; const program = this.querySelector('select').value; const msg = 'Hola, mi nombre es ' + name + '. Me gustaría reservar una clase gratis para el programa: ' + program + '.'; window.open('https://wa.me/56900000000?text=' + encodeURIComponent(msg), '_blank');">
       <h3>Reserva tu clase</h3>
       <div class="field"><label>Nombre</label><input type="text" required placeholder="Tu nombre" /></div>
       <div class="field"><label>WhatsApp</label><input type="tel" required placeholder="+56 9 ..." /></div>
