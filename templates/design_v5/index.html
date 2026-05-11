@@ -23,6 +23,20 @@
     --ochre:#b88846;
     --ochre-2:#8b6633;
   }
+  [data-theme="dark"]{
+    --ivory:#161410;
+    --ivory-2:#1d1a14;
+    --ivory-3:#26221a;
+    --ink:#f4ede0;
+    --ink-2:#ece3d2;
+    --ink-soft:#a8a292;
+    --line:#3a3528;
+    --line-dark:#cdc3ad;
+    --red:#d12a23;
+    --red-2:#a80006;
+    --ochre:#d4a05a;
+    --ochre-2:#b88846;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -65,6 +79,17 @@
   .btn-ghost:hover{background:var(--ink);color:var(--ivory)}
   .btn-ghost-light{background:transparent;color:var(--ivory);border-color:rgba(244,237,224,.4)}
   .btn-ghost-light:hover{background:var(--ivory);color:var(--ink);border-color:var(--ivory)}
+  .theme-toggle{
+    background:transparent;border:1px solid var(--line);width:42px;height:42px;
+    cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    padding:0;transition:background .25s, color .25s, border-color .25s;border-radius:0;
+  }
+  .theme-toggle:hover{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+  .theme-toggle svg{width:18px;height:18px}
+  .theme-toggle .moon{display:block}
+  .theme-toggle .sun{display:none}
+  [data-theme="dark"] .theme-toggle .moon{display:none}
+  [data-theme="dark"] .theme-toggle .sun{display:block}
 
   /* ---------- TOP BAR ---------- */
   .topbar{
@@ -673,6 +698,10 @@
         <li><a href="#sedes">Sedes</a></li>
       </ul>
     </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
     <a href="#contacto" class="btn btn-red">Clase gratis <span class="arr">→</span></a>
     <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('abierto')">☰</button>
   </div>
@@ -1177,6 +1206,15 @@
 </footer>
 
 <script>
+  (function(){
+    const saved = localStorage.getItem('theme');
+    if(saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  })();
+  function toggleTheme(){
+    const cur = document.documentElement.getAttribute('data-theme');
+    if(cur === 'dark'){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','light')}
+    else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('theme','dark')}
+  }
   const io = new IntersectionObserver((entries)=>{
     entries.forEach((e)=>{
       if(e.isIntersecting){
