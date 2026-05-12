@@ -1,4 +1,9 @@
 {
+  "name": "kazoku-templates",
+  "compatibility_date": "2026-05-12",
+  "assets": {
+    "directory": "./"
+  },
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
