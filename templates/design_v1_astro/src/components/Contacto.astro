@@ -84,11 +84,15 @@ import { WHATSAPP, EMAIL } from '../config';
     border: none;
     font-size: 1rem;
     font-family: inherit;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .btn-submit {
     background: var(--amarillo);
     color: var(--azul);
     font-size: 1.1rem;
+    width: 100%;
   }
   .btn-submit:hover {
     background: #fff;
@@ -104,6 +108,17 @@ import { WHATSAPP, EMAIL } from '../config';
     color: var(--amarillo);
     font-weight: 700;
     text-decoration: underline;
+  }
+
+  @media (max-width: 540px) {
+    .form-rapido {
+      padding: 1.2rem;
+    }
+    .form-rapido input,
+    .form-rapido select {
+      padding: 0.8rem;
+      font-size: 0.95rem;
+    }
   }
 </style>
 

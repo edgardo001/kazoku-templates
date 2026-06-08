@@ -269,7 +269,7 @@ const instructorsJson = JSON.stringify(INSTRUCTORS);
   .inst-modal.abierto { display: flex; }
   .inst-modal-content {
     position: relative; max-width: 520px; width: 100%; border-radius: var(--radio);
-    overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    overflow-y: auto; max-height: 90vh; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
   }
   .inst-modal-content img { width: 100%; display: block; }
   .inst-modal-info {
@@ -297,15 +297,23 @@ const instructorsJson = JSON.stringify(INSTRUCTORS);
   }
   .inst-modal-cert { max-width: 640px; }
   .inst-modal-close {
-    position: absolute; top: 0.5rem; right: 0.8rem; background: rgba(0,0,0,0.4);
-    border: none; font-size: 1.8rem; color: #fff; cursor: pointer; z-index: 10;
+    position: absolute; top: 0.5rem; right: 0.8rem; background: rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.5); font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 10;
     width: 36px; height: 36px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     line-height: 1; transition: background 0.2s;
   }
-  .inst-modal-close:hover { background: rgba(0,0,0,0.7); }
+  .inst-modal-close:hover { background: rgba(0,0,0,0.9); }
 
   @media (max-width: 540px) {
     .inst-card-center { max-width: 100%; }
+    .inst-modal { padding: 0.5rem; align-items: flex-start; padding-top: 2rem; }
+    .inst-modal-content { max-height: 85vh; }
+    .inst-modal-info { padding: 1rem 1.2rem 1.5rem; }
+    .inst-modal-info p { font-size: 0.88rem; }
+    .inst-modal-close {
+      top: 0.6rem; right: 0.6rem; width: 32px; height: 32px; font-size: 1.3rem;
+      background: rgba(0,0,0,0.7); border-width: 2px;
+    }
   }
 </style>

@@ -60,7 +60,7 @@ const CLASE_GRATIS_MSG = encodeURIComponent(CLASE_MSG);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 3px solid var(--rojo);
-    transition: background 0.3s, border-color 0.3s;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
   }
 
   .nav-inner {
@@ -142,6 +142,9 @@ const CLASE_GRATIS_MSG = encodeURIComponent(CLASE_MSG);
     cursor: pointer;
   }
   @media (max-width: 860px) {
+    header.nav.oculto {
+      transform: translateY(-100%);
+    }
     nav ul {
       display: none;
     }
@@ -163,6 +166,31 @@ const CLASE_GRATIS_MSG = encodeURIComponent(CLASE_MSG);
     .logo-text small {
       font-size: 0.65rem;
     }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    .nav-inner {
+      padding: 0.5rem 0.8rem;
+      gap: 0.6rem;
+    }
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+    }
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+    .nav-inner .btn {
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .menu-toggle {
+      font-size: 1.4rem;
+    }
   }
 </style>
 
@@ -170,4 +198,16 @@ const CLASE_GRATIS_MSG = encodeURIComponent(CLASE_MSG);
   document.getElementById('menuToggle')?.addEventListener('click', () => {
     document.getElementById('navMenu')?.classList.toggle('abierto');
   });
+
+  let lastScroll = 0;
+  const header = document.querySelector('header.nav');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80 && y > lastScroll) {
+      header.classList.add('oculto');
+    } else {
+      header.classList.remove('oculto');
+    }
+    lastScroll = y;
+  }, { passive: true });
 </script>
