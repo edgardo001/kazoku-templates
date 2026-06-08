@@ -1,0 +1,311 @@
+---
+
+const INSTRUCTORS = [
+  {
+    name: 'Sensei 1',
+    role: 'Instructor Principal — Karate Do',
+    photo: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&q=80',
+    bio: 'Sensei cinturón negro 5° Dan con más de 20 años dedicados a la enseñanza del Karate Do tradicional. Formador de cinturones negros y competidores regionales.',
+    certs: [
+      { label: '🏅 Cinturón Negro 5° Dan' },
+      { label: '📜 Certificado Federación Chilena de Karate', certImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80' },
+      { label: '🏆 Ken Shin Kan — Chile' },
+    ],
+  },
+  {
+    name: 'Sensei 2',
+    role: 'Instructor — Karate Do',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+    bio: 'Sensei cinturón negro 3° Dan con más de 10 años de experiencia en la enseñanza infantil y juvenil. Apasionado por transmitir los valores del karate-do a las nuevas generaciones.',
+    certs: [
+      { label: '🥋 Cinturón Negro 3° Dan' },
+      { label: '📜 Certificado Federación Chilena de Karate', certImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80' },
+      { label: '👨‍🏫 +10 años enseñando' },
+    ],
+  },
+  {
+    name: 'Sensei 3',
+    role: 'Instructor — Karate Do',
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80',
+    bio: 'Sensei cinturón negro 2° Dan especialista en defensa personal y técnicas de control. Entrenador dedicado a formar alumnos seguros y disciplinados.',
+    certs: [
+      { label: '🥋 Cinturón Negro 2° Dan' },
+      { label: '📜 Certificado Federación Chilena de Karate', certImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80' },
+      { label: '⭐ Especialista en técnicas de control' },
+    ],
+  },
+  {
+    name: 'Sensei 4',
+    role: 'Instructor — Karate Do',
+    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
+    bio: 'Sensei cinturón negro 2° Dan con enfoque en clases infantiles. Cree firmemente que el karate forma el carácter desde la infancia, combinando disciplina con juego.',
+    certs: [
+      { label: '🥋 Cinturón Negro 2° Dan' },
+      { label: '📜 Certificado Federación Chilena de Karate', certImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80' },
+      { label: '🧒 Especialista en clases infantiles' },
+    ],
+  },
+  {
+    name: 'Instructor/a de Pilates',
+    role: 'Pilates Terapéutico & Fitness',
+    photo: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&q=80',
+    bio: 'Instructor/a certificado/a en Pilates con especialización en Pilates Terapéutico y Fitness. Apasionado/a por ayudar a sus alumnos a moverse mejor y sin dolor.',
+    certs: [
+      { label: '🧘 Instructor/a Certificado/a Pilates' },
+      { label: '⚕️ Especialista en Pilates Terapéutico' },
+      { label: '📜 Certificación Internacional', certImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80' },
+    ],
+  },
+];
+
+const instructorsJson = JSON.stringify(INSTRUCTORS);
+---
+
+<section id="instructores" class="instructores">
+  <div class="container">
+    <h2 class="title">Nuestros <span>Instructores</span></h2>
+    <p class="subtitle">Conoce al equipo profesional que guía tu entrenamiento</p>
+
+    <h3 class="subtitle-section">Karate Do Ken Shin Kan</h3>
+    <div class="inst-grid">
+      {
+        INSTRUCTORS.slice(0, 4).map((inst, i) => (
+          <div class="inst-card" data-index={i}>
+            <div class="inst-avatar">
+              <img src={inst.photo} alt={inst.name} loading="lazy" />
+              <span class="inst-click-hint">Ver más</span>
+            </div>
+            <h4>{inst.name}</h4>
+            <span class="inst-role">{inst.role}</span>
+            <div class="inst-certs">
+              {
+                inst.certs.map((c) => (
+                  <span class="inst-cert" data-cert={c.certImage || ''}>{c.label}</span>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <h3 class="subtitle-section">Pilates</h3>
+    <div class="inst-grid">
+      {
+        INSTRUCTORS.slice(4).map((inst, i) => (
+          <div class="inst-card inst-card-center" data-index={i + 4}>
+            <div class="inst-avatar">
+              <img src={inst.photo} alt={inst.name} loading="lazy" />
+              <span class="inst-click-hint">Ver más</span>
+            </div>
+            <h4>{inst.name}</h4>
+            <span class="inst-role">{inst.role}</span>
+            <div class="inst-certs">
+              {
+                inst.certs.map((c) => (
+                  <span class="inst-cert" data-cert={c.certImage || ''}>{c.label}</span>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Photo Modal -->
+  <div class="inst-modal" id="instPhotoModal">
+    <div class="inst-modal-content">
+      <button class="inst-modal-close" id="instPhotoClose">&times;</button>
+      <img id="instPhotoImg" src="" alt="" />
+      <div class="inst-modal-info" id="instPhotoInfo">
+        <h4 id="instModalName"></h4>
+        <span class="inst-modal-role" id="instModalRole"></span>
+        <p id="instModalBio"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate Modal -->
+  <div class="inst-modal" id="instCertModal">
+    <div class="inst-modal-content inst-modal-cert">
+      <button class="inst-modal-close" id="instCertClose">&times;</button>
+      <img id="instCertImg" src="" alt="Certificado" />
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ instructorsJson }}>
+  const INSTRUCTORS = JSON.parse(instructorsJson);
+
+  const photoModal = document.getElementById('instPhotoModal');
+  const certModal = document.getElementById('instCertModal');
+  const photoImg = document.getElementById('instPhotoImg');
+  const certImg = document.getElementById('instCertImg');
+  const photoClose = document.getElementById('instPhotoClose');
+  const certClose = document.getElementById('instCertClose');
+  const instModalName = document.getElementById('instModalName');
+  const instModalRole = document.getElementById('instModalRole');
+  const instModalBio = document.getElementById('instModalBio');
+
+  const openModal = (modal) => {
+    modal.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeModal = (modal) => {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+  };
+
+  photoClose.addEventListener('click', () => closeModal(photoModal));
+  certClose.addEventListener('click', () => closeModal(certModal));
+
+  photoModal.addEventListener('click', (e) => {
+    if (e.target === photoModal) closeModal(photoModal);
+  });
+  certModal.addEventListener('click', (e) => {
+    if (e.target === certModal) closeModal(certModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal(photoModal);
+      closeModal(certModal);
+    }
+  });
+
+  // Card click → photo modal
+  document.querySelectorAll('.inst-card').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // Don't open photo if clicking a cert that has image
+      if (e.target.dataset.cert) return;
+      const idx = parseInt(card.dataset.index);
+      const inst = INSTRUCTORS[idx];
+      if (!inst) return;
+      photoImg.src = inst.photo.replace('w=400', 'w=800');
+      photoImg.alt = inst.name;
+      instModalName.textContent = inst.name;
+      instModalRole.textContent = inst.role;
+      instModalBio.textContent = inst.bio;
+      openModal(photoModal);
+    });
+  });
+
+  // Cert click → certificate modal
+  document.querySelectorAll('.inst-cert').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const url = el.dataset.cert;
+      if (!url) return;
+      e.stopPropagation();
+      certImg.src = url;
+      openModal(certModal);
+    });
+  });
+</script>
+
+<style>
+  .instructores { background: var(--crema); }
+  .subtitle-section {
+    text-align: center; color: var(--azul); font-size: 1.3rem; font-weight: 800;
+    margin: 2.5rem 0 1.5rem; position: relative;
+  }
+  .subtitle-section::after {
+    content: ''; display: block; width: 60px; height: 3px;
+    background: var(--rojo); margin: 0.5rem auto 0; border-radius: 2px;
+  }
+  .inst-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .inst-card {
+    background: var(--bg-card); border-radius: var(--radio); padding: 2rem 1.5rem;
+    text-align: center; box-shadow: 0 4px 16px rgba(29,53,87,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-bottom: 4px solid var(--azul-claro);
+    cursor: pointer;
+  }
+  .inst-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .inst-card:nth-child(2) { border-bottom-color: var(--rojo); }
+  .inst-card:nth-child(3) { border-bottom-color: var(--amarillo); }
+  .inst-card:nth-child(4) { border-bottom-color: var(--azul); }
+  .inst-card-center { max-width: 400px; margin: 0 auto; }
+  .inst-avatar {
+    width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+    margin: 0 auto 1rem; border: 4px solid var(--amarillo);
+    position: relative;
+  }
+  .inst-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .inst-click-hint {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.5); color: #fff; font-size: 0.75rem; font-weight: 700;
+    opacity: 0; transition: opacity 0.25s; border-radius: 50%;
+  }
+  .inst-card:hover .inst-click-hint { opacity: 1; }
+  .inst-card h4 { color: var(--azul); font-size: 1.15rem; margin-bottom: 0.3rem; }
+  .inst-role { display: block; color: var(--rojo); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .inst-certs { display: flex; flex-direction: column; gap: 0.4rem; }
+  .inst-cert {
+    font-size: 0.82rem; color: var(--gris); background: var(--crema);
+    padding: 0.3rem 0.7rem; border-radius: 6px; text-align: left;
+    transition: background 0.2s;
+  }
+  .inst-cert[data-cert]:hover {
+    background: var(--azul);
+    color: #fff;
+    cursor: pointer;
+  }
+  .inst-cert[data-cert]::after {
+    content: ' 🔍';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+  .inst-cert[data-cert]:hover::after {
+    opacity: 1;
+  }
+
+  /* Modal */
+  .inst-modal {
+    display: none; position: fixed; inset: 0; z-index: 1100;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .inst-modal.abierto { display: flex; }
+  .inst-modal-content {
+    position: relative; max-width: 520px; width: 100%; border-radius: var(--radio);
+    overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .inst-modal-content img { width: 100%; display: block; }
+  .inst-modal-info {
+    padding: 1.5rem 2rem 2rem;
+    background: var(--bg-card);
+  }
+  .inst-modal-info h4 {
+    color: var(--azul);
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+  .inst-modal-role {
+    display: block;
+    color: var(--rojo);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .inst-modal-info p {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .inst-modal-cert { max-width: 640px; }
+  .inst-modal-close {
+    position: absolute; top: 0.5rem; right: 0.8rem; background: rgba(0,0,0,0.4);
+    border: none; font-size: 1.8rem; color: #fff; cursor: pointer; z-index: 10;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1; transition: background 0.2s;
+  }
+  .inst-modal-close:hover { background: rgba(0,0,0,0.7); }
+
+  @media (max-width: 540px) {
+    .inst-card-center { max-width: 100%; }
+  }
+</style>

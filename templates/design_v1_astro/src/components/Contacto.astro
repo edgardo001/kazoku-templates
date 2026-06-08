@@ -1,0 +1,145 @@
+---
+import { WHATSAPP, EMAIL } from '../config';
+---
+
+<section id="contacto" class="cta">
+  <div class="container">
+    <h2>¿Listo para empezar tu transformación?</h2>
+    <p>
+      Reserva tu clase de prueba <strong>GRATIS</strong> en Karate Do Ken Shin Kan.
+      Sin compromiso. Solo trae ropa cómoda y muchas ganas.
+    </p>
+    <form class="form-rapido" id="contactForm">
+      <input type="text" id="formName" placeholder="Nombre completo" required />
+      <input type="tel" id="formPhone" placeholder="Teléfono / WhatsApp" required />
+      <input type="email" id="formEmail" placeholder="Correo electrónico" required />
+      <select id="formProgram" required>
+        <option value="">¿Qué te interesa?</option>
+        <option>Karate Do Ken Shin Kan — Niño/a</option>
+        <option>Karate Do Ken Shin Kan — Adolescente</option>
+        <option>Karate Do Ken Shin Kan — Adulto</option>
+        <option>Pilates Terapéutico</option>
+        <option>Pilates Fitness</option>
+        <option>Arriendo de Salón para Eventos</option>
+      </select>
+      <button type="submit" class="btn btn-submit">
+        Reservar mi clase gratis 🥋
+      </button>
+    </form>
+    <p class="cta-alt">
+      O escríbenos directamente a
+      <a
+        href={`https://wa.me/${WHATSAPP.primary}`}
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp 1
+      </a>
+      —
+      <a
+        href={`https://wa.me/${WHATSAPP.secondary}`}
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp 2
+      </a>
+      o a
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: linear-gradient(135deg, var(--rojo), var(--rojo-osc));
+    color: #fff;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+  .cta > .container > p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  .form-rapido {
+    max-width: 520px;
+    margin: 0 auto;
+    display: grid;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: var(--radio);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .form-rapido input,
+  .form-rapido select {
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .btn-submit {
+    background: var(--amarillo);
+    color: var(--azul);
+    font-size: 1.1rem;
+  }
+  .btn-submit:hover {
+    background: #fff;
+    color: var(--azul);
+    transform: translateY(-2px);
+  }
+  .cta-alt {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+  .cta-alt a {
+    color: var(--amarillo);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+</style>
+
+<script define:vars={{ WHATSAPP }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('formName').value.trim();
+      const phone = document.getElementById('formPhone').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const program = document.getElementById('formProgram').value;
+
+      if (!name || !phone || !email || !program) {
+        alert('Por favor completa todos los campos.');
+        return;
+      }
+
+      const msg =
+        'Hola, mi nombre es ' +
+        name +
+        '. Mi teléfono es ' +
+        phone +
+        ' y mi correo es ' +
+        email +
+        '. Me interesa el programa: ' +
+        program +
+        '. Me gustaría reservar una clase gratis.';
+
+      window.open(
+        'https://wa.me/' + WHATSAPP.primary + '?text=' + encodeURIComponent(msg),
+        '_blank'
+      );
+    });
+  });
+</script>

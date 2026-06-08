@@ -1,0 +1,125 @@
+---
+
+---
+
+<section id="quienes-somos" class="quienes-somos">
+  <div class="container">
+    <h2 class="title">Quiénes <span>Somos</span></h2>
+    <p class="subtitle">
+      Conoce la visión y el equipo detrás de Dojo Kazoku
+    </p>
+    <div class="qs-grid">
+      <div class="qs-card">
+        <div class="qs-icon">🎯</div>
+        <h3>Misión</h3>
+        <p>
+          Formar personas íntegras a través de la práctica del Karate Do Ken Shin Kan
+          y el Pilates, promoviendo la disciplina, el respeto, la salud física
+          y mental, y el fortalecimiento del carácter en un ambiente familiar
+          y profesional.
+        </p>
+      </div>
+      <div class="qs-card">
+        <div class="qs-icon">🔭</div>
+        <h3>Visión</h3>
+        <p>
+          Ser un referente en la formación de carácter y bienestar integral en
+          la comunidad de La Granja y Santiago, siendo reconocidos por nuestra
+          excelencia técnica, calidez humana y compromiso con los valores
+          tradicionales del karate-do.
+        </p>
+      </div>
+      <div class="qs-card qs-card-full">
+        <div class="qs-icon">👨‍🏫</div>
+        <h3>Nuestros Instructores</h3>
+        <p>
+          Contamos con instructores certificados por la Federación Chilena de
+          Karate y con años de experiencia en la enseñanza. El dojo ofrece de
+          forma separada e independiente las clases de Karate Do Ken Shin Kan
+          y, en horarios diferentes, las clases de Pilates, garantizando un
+          entrenamiento seguro, efectivo y motivador para todas las edades.
+        </p>
+        <div class="trayectoria">
+          <span class="tray-item">🥋 +20 años de tradición</span>
+          <span class="tray-item">🏅 Cinturones negros certificados</span>
+          <span class="tray-item">🧘 Instructores de Pilates</span>
+          <span class="tray-item">📜 Miembros de la Federación</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quienes-somos {
+    background: var(--bg-card);
+  }
+  .qs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .qs-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radio);
+    border-top: 5px solid var(--azul-claro);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .qs-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra);
+  }
+  .qs-card:nth-child(2) {
+    border-top-color: var(--rojo);
+  }
+  .qs-card-full {
+    grid-column: 1 / -1;
+    border-top-color: var(--amarillo);
+  }
+  .qs-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--azul);
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .qs-card:nth-child(2) .qs-icon {
+    background: var(--rojo);
+  }
+  .qs-card-full .qs-icon {
+    background: var(--amarillo);
+  }
+  .qs-card h3 {
+    color: var(--azul);
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+  }
+  .qs-card p {
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+  .trayectoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  .tray-item {
+    background: var(--azul);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 860px) {
+    .qs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

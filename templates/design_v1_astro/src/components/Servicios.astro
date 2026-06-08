@@ -1,0 +1,199 @@
+---
+import { WHATSAPP } from '../config';
+const WHATSAPP_NUM = WHATSAPP.primary;
+const CLASE_MSG = encodeURIComponent(
+  'Hola, me gustaría información sobre las clases de Karate y/o Pilates en Dojo Kazoku.'
+);
+---
+
+<section id="servicios" class="servicios">
+  <div class="container">
+    <h2 class="title">Nuestros <span>Servicios</span></h2>
+    <p class="subtitle">
+      Karate y Pilates: dos disciplinas, un mismo propósito: tu bienestar
+    </p>
+    <div class="serv-grid">
+      <div class="serv-card serv-karate">
+        <div class="serv-badge">Tradicional</div>
+        <div class="serv-icon">🥋</div>
+        <h3>Karate Do<br /><small>Ken Shin Kan</small></h3>
+        <p>
+          Karate-do tradicional que desarrolla disciplina, confianza y
+          condición física. Ideal para niños, jóvenes y adultos que buscan
+          fortalecer su carácter y desarrollar disciplina personal.
+        </p>
+        <ul class="serv-features">
+          <li>⭐ Clases para niños (5-12 años)</li>
+          <li>⭐ Adolescentes y adultos</li>
+          <li>⭐ Preparación para exámenes de cinturón</li>
+          <li>⭐ Participación en torneos KSK</li>
+          <li>⭐ Defensa personal aplicada</li>
+          <li>🎁 Primera clase gratis</li>
+        </ul>
+        <a
+          href={`https://wa.me/${WHATSAPP_NUM}?text=${CLASE_MSG}`}
+          target="_blank"
+          class="btn"
+        >
+          Consultar Horarios
+        </a>
+      </div>
+
+      <div class="serv-divider">
+        <span>+</span>
+      </div>
+
+      <div class="serv-card serv-pilates">
+        <div class="serv-badge serv-badge-pilates">Moderno</div>
+        <div class="serv-icon">🧘</div>
+        <h3>Pilates<br /><small>Terapéutico & Fitness</small></h3>
+        <p>
+          Método de acondicionamiento físico que fortalece el core, mejora la
+          flexibilidad y la postura. Ofrecemos pilates terapéutico para
+          rehabilitación y pilates fitness para acondicionamiento general.
+        </p>
+        <ul class="serv-features">
+          <li>⭐ Pilates Terapéutico (Mar y Jue)</li>
+          <li>⭐ Pilates Fitness (Mié y Vie)</li>
+          <li>⭐ Clases con implementos (balones, bosu, bandas)</li>
+          <li>⭐ Grupos reducidos y atención personalizada</li>
+          <li>⭐ Todos los niveles</li>
+        </ul>
+        <a
+          href={`https://wa.me/${WHATSAPP_NUM}?text=${CLASE_MSG}`}
+          target="_blank"
+          class="btn btn-amarillo"
+        >
+          Consultar Horarios
+        </a>
+      </div>
+    </div>
+    <p class="serv-footnote">
+      🏆
+      <strong>¿No sabes cuál elegir?</strong> Ven a una clase de prueba
+      <strong>GRATIS</strong> de Karate o consulta por Pilates.
+    </p>
+  </div>
+</section>
+
+<style>
+  .servicios {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
+    color: #fff;
+  }
+  .servicios h2.title {
+    color: #fff;
+  }
+  .servicios h2.title span {
+    color: var(--amarillo);
+  }
+  .servicios .subtitle {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .serv-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .serv-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radio);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .serv-card .btn {
+    margin-top: auto;
+  }
+  .serv-card:hover {
+    transform: translateY(-6px);
+  }
+  .serv-pilates {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .serv-badge {
+    display: inline-block;
+    background: var(--rojo);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  .serv-badge-pilates {
+    background: var(--amarillo);
+    color: var(--azul);
+  }
+  .serv-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .serv-card h3 {
+    color: var(--amarillo);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  .serv-card h3 small {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+  }
+  .serv-pilates h3 {
+    color: #fff;
+  }
+  .serv-pilates h3 small {
+    color: var(--amarillo);
+  }
+  .serv-card p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .serv-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  .serv-features li {
+    padding: 0.3rem 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+  }
+  .serv-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .serv-divider span {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--amarillo);
+    opacity: 0.6;
+  }
+  .serv-footnote {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 860px) {
+    .serv-grid {
+      grid-template-columns: 1fr;
+    }
+    .serv-divider {
+      display: none;
+    }
+    .serv-card {
+      padding: 1.8rem 1.2rem;
+    }
+  }
+</style>

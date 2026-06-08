@@ -1,0 +1,108 @@
+---
+
+---
+
+<section id="certificaciones" class="certificaciones">
+  <div class="container">
+    <h2 class="title">Certificaciones <span>y Legalidad</span></h2>
+    <p class="subtitle">
+      Entrena con la tranquilidad de estar en un dojo profesional y seguro
+    </p>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <h3>Federación Chilena de Karate</h3>
+        <p>
+          Nuestros instructores cuentan con certificaciones oficiales
+          otorgadas por la Federación Chilena de Karate, garantizando una
+          enseñanza de calidad avalada por el organismo rector del karate
+          nacional.
+        </p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📜</div>
+        <h3>Ken Shin Kan Chile</h3>
+        <p>
+          Somos parte del estilo Ken Shin Kan, una rama tradicional del Karate
+          Ken Shin Kan con presencia internacional y un linaje que se remonta al
+          Maestro Seiichi Akamine.
+        </p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <h3>Decreto 22 — Prevención del Acoso</h3>
+        <p>
+          Cumplimos con la normativa vigente (Decreto 22) que regula la
+          prevención del acoso sexual, la violencia y la discriminación en la
+          actividad deportiva. Todos nuestros instructores están capacitados y
+          contamos con protocolos de actuación.
+        </p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⚕️</div>
+        <h3>Seguridad y Primeros Auxilios</h3>
+        <p>
+          Nuestras instalaciones cuentan con los implementos necesarios para
+          la seguridad de todos los alumnos y nuestro equipo está capacitado
+          en primeros auxilios básicos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .certificaciones {
+    background: var(--bg-card);
+  }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .cert-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radio);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 12px rgba(29, 53, 87, 0.06);
+  }
+  .cert-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--rojo);
+    box-shadow: var(--sombra);
+  }
+  .cert-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    margin: 0 auto 1.2rem;
+  }
+  .cert-card:nth-child(2) .cert-icon {
+    background: var(--rojo);
+  }
+  .cert-card:nth-child(3) .cert-icon {
+    background: var(--amarillo);
+    color: var(--azul);
+  }
+  .cert-card:nth-child(4) .cert-icon {
+    background: var(--azul-claro);
+  }
+  .cert-card h3 {
+    color: var(--azul);
+    margin-bottom: 0.8rem;
+    font-size: 1.15rem;
+  }
+  .cert-card p {
+    color: var(--gris);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+</style>

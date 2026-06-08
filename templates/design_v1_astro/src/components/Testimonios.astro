@@ -1,0 +1,137 @@
+---
+
+---
+
+<section id="testimonios" class="testimonios">
+  <div class="container">
+    <h2 class="title">Lo que dice <span>nuestra familia</span></h2>
+    <p class="subtitle">Historias reales de transformación</p>
+    <div class="grid-test">
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>
+          Mi hijo cambió desde que entrena en Kazoku. Es más responsable,
+          seguro y respetuoso. ¡La mejor decisión!
+        </p>
+        <div class="autor">
+          <div class="avatar">CM</div>
+          <div>
+            <strong>Carolina M.</strong>
+            <small>Mamá de alumno, 8 años</small>
+          </div>
+        </div>
+      </div>
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>
+          Llegué buscando bajar el estrés y encontré una disciplina que me
+          cambió la vida. El sensei es excepcional.
+        </p>
+        <div class="autor">
+          <div class="avatar">RF</div>
+          <div>
+            <strong>Rodrigo F.</strong>
+            <small>Alumno adulto, cinturón verde</small>
+          </div>
+        </div>
+      </div>
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>
+          Las clases de Pilates me ayudaron muchísimo con mi dolor de
+          espalda. El ambiente es súper acogedor y profesional.
+        </p>
+        <div class="autor">
+          <div class="avatar">MP</div>
+          <div>
+            <strong>María P.</strong>
+            <small>Alumna de Pilates</small>
+          </div>
+        </div>
+      </div>
+      <div class="card-test">
+        <div class="estrellas">★★★★★</div>
+        <p>
+          Ambiente limpio, profesional y muy familiar. Mis dos hijas adoran
+          venir a sus clases.
+        </p>
+        <div class="autor">
+          <div class="avatar">PS</div>
+          <div>
+            <strong>Paula S.</strong>
+            <small>Mamá de alumnas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios {
+    background: var(--crema);
+  }
+  .grid-test {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .card-test {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radio);
+    position: relative;
+    border-left: 5px solid var(--rojo);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .card-test:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra);
+  }
+  .card-test::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 5rem;
+    color: var(--amarillo);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .card-test p {
+    font-style: italic;
+    margin: 1.5rem 0 1rem;
+    color: var(--text-body);
+  }
+  .autor {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .autor strong {
+    display: block;
+    color: var(--azul);
+    font-size: 0.95rem;
+  }
+  .autor small {
+    color: var(--gris);
+    font-size: 0.8rem;
+  }
+  .estrellas {
+    color: var(--amarillo);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+</style>

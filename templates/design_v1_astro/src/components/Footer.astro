@@ -1,0 +1,203 @@
+---
+import { WHATSAPP, EMAIL, SOCIAL, MAPS_URL } from '../config';
+const WHATSAPP_URL1 = `https://wa.me/${WHATSAPP.primary}`;
+const WHATSAPP_URL2 = `https://wa.me/${WHATSAPP.secondary}`;
+---
+
+<footer>
+  <div class="foot-grid container">
+    <div class="foot-brand">
+      <div class="logo" style="color: #fff; margin-bottom: 1rem">
+        <img
+          src="/img/kazoku.jpg"
+          alt="Dojo Kazoku"
+          width="52"
+          height="52"
+        />
+        <span>Dojo Kazoku</span>
+      </div>
+      <p>
+        Karate Do Ken Shin Kan &amp; Pilates en La Granja. Forjando carácter
+        desde el primer kiai.
+      </p>
+      <div class="social-links">
+        <a href={SOCIAL.instagram1} target="_blank" rel="noopener" class="social-link" aria-label="Instagram @salonkazoku">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect width="24" height="24" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
+          <span>@salonkazoku</span>
+        </a>
+        <a href={SOCIAL.facebook} target="_blank" rel="noopener" class="social-link" aria-label="Facebook ksk.kazoku">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>ksk.kazoku</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="foot-col">
+      <h4>Enlaces</h4>
+      <a href="#inicio">Inicio</a>
+      <a href="#quienes-somos">Quiénes Somos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://kenshinkan.cl" target="_blank" rel="noopener">🌐 kenshinkan.cl</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Horarios</h4>
+      <span class="foot-subtitle">Karate Do Ken Shin Kan</span>
+      <span>Lun, Mié y Vie — 19:00 a 20:00</span>
+      <span class="foot-subtitle">Pilates Terapéutico</span>
+      <span>Mar y Jue — 20:00 a 21:00</span>
+      <span class="foot-subtitle">Pilates Fitness</span>
+      <span>Mié y Vie — 20:30 a 21:30</span>
+    </div>
+
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <a href={MAPS_URL} target="_blank" rel="noopener">
+        📍 Lota 7916, La Granja, Santiago
+      </a>
+      <a href={WHATSAPP_URL1} target="_blank" rel="noopener">
+        📱 +56 9 8625 8208
+      </a>
+      <a href={WHATSAPP_URL2} target="_blank" rel="noopener">
+        📱 +56 9 8281 8804
+      </a>
+      <a href={`mailto:${EMAIL}`}>✉ {EMAIL}</a>
+      <a href={SOCIAL.instagram1} target="_blank" rel="noopener">
+        📸 @salonkazoku
+      </a>
+      <a href={SOCIAL.instagram2} target="_blank" rel="noopener">
+        📸 @ksk.kazoku
+      </a>
+    </div>
+  </div>
+
+  <div class="copy container">
+    <p>
+      © 2026 Dojo Kazoku — Club Deportivo y Social KS Kakasoku. Todos los
+      derechos reservados.
+    </p>
+    <p class="copy-legal">
+      <strong>Uso de imágenes:</strong> Todas las fotografías publicadas en
+      este sitio cuentan con la autorización expresa y escrita de los
+      titulares o de sus padres/tutores en caso de menores de edad, conforme
+      a la normativa vigente. Prohibida su reproducción sin autorización.
+    </p>
+    <p class="copy-domain">
+      <strong>Dominio:</strong> dojokazoku.cl — Propiedad del Club Deportivo y
+      Social KS Kakasoku. Renovación: septiembre 2026.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--azul);
+    color: #fff;
+    padding: 3rem 1.2rem 1.5rem;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .foot-grid h4 {
+    color: var(--amarillo);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+  .foot-grid a,
+  .foot-grid span {
+    display: block;
+    padding: 0.3rem 0;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    font-size: 0.9rem;
+  }
+  .foot-grid a:hover {
+    opacity: 1;
+    color: var(--amarillo);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 800;
+  }
+  .logo img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--amarillo);
+  }
+  .foot-brand p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .social-links {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .foot-grid a.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    width: fit-content;
+    min-width: 180px;
+    color: #fff;
+  }
+  .foot-grid a.social-link svg {
+    flex-shrink: 0;
+  }
+  .foot-grid a.social-link:hover {
+    background: var(--rojo);
+  }
+  .foot-note {
+    font-size: 0.8rem !important;
+    opacity: 0.6 !important;
+    font-style: italic;
+  }
+  .copy {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+  .copy p {
+    opacity: 0.7;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .copy-legal {
+    margin-top: 0.5rem;
+    font-size: 0.8rem !important;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  .copy-domain {
+    margin-top: 0.3rem;
+    font-size: 0.8rem !important;
+  }
+
+  @media (max-width: 860px) {
+    .foot-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 540px) {
+    .foot-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

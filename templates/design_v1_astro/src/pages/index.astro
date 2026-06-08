@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import QuienesSomos from '../components/QuienesSomos.astro';
+import Servicios from '../components/Servicios.astro';
+import Beneficios from '../components/Beneficios.astro';
+import Certificaciones from '../components/Certificaciones.astro';
+import Instructores from '../components/Instructores.astro';
+import Galeria from '../components/Galeria.astro';
+import Testimonios from '../components/Testimonios.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<Base>
+  <slot name="head">
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "16521f1241c54ff9bfc144a23964ac76"}'
+    ></script>
+  </slot>
+  <Nav />
+  <Hero />
+  <QuienesSomos />
+  <Servicios />
+  <Beneficios />
+  <Certificaciones />
+  <Instructores />
+  <Galeria />
+  <Testimonios />
+  <Contacto />
+  <Footer />
+  <WhatsAppFloat />
+</Base>

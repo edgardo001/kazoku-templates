@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base>
+  <section class="error-404">
+    <div class="container">
+      <h1>404</h1>
+      <h2>Página no encontrada</h2>
+      <p>La página que buscas no existe o fue movida.</p>
+      <a href="/" class="btn">Volver al inicio</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .error-404 {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--crema);
+  }
+  .error-404 h1 {
+    font-size: clamp(5rem, 12vw, 8rem);
+    font-weight: 900;
+    color: var(--rojo);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .error-404 h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--azul);
+    margin-bottom: 1rem;
+  }
+  .error-404 p {
+    color: var(--gris);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+</style>

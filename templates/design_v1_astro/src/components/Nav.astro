@@ -1,0 +1,173 @@
+---
+import { WHATSAPP, CLASE_MSG } from '../config';
+const CLASE_GRATIS_MSG = encodeURIComponent(CLASE_MSG);
+---
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img
+        src="/img/kazoku.jpg"
+        alt="Dojo Kazoku"
+        width="52"
+        height="52"
+      />
+      <span class="logo-text">
+        Dojo Kazoku
+        <small>Karate Do Ken Shin Kan & Pilates</small>
+      </span>
+    </a>
+    <nav id="navMenu">
+      <ul>
+        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#certificaciones">Certificaciones</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTema()" aria-label="Cambiar tema">
+      <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+      <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+    <a
+      href={`https://wa.me/${WHATSAPP.primary}?text=${CLASE_GRATIS_MSG}`}
+      target="_blank"
+      class="btn"
+    >
+      Clase Gratis
+    </a>
+    <button
+      class="menu-toggle"
+      aria-label="Abrir menú"
+      id="menuToggle"
+    >☰</button>
+  </div>
+</header>
+
+<style>
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--rojo);
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 800;
+    color: var(--azul);
+  }
+  .logo img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--amarillo);
+  }
+  .logo-text {
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+  .logo-text small {
+    display: block;
+    font-weight: 400;
+    color: var(--rojo);
+    font-size: 0.75rem;
+  }
+  nav ul {
+    display: flex;
+    gap: 1.6rem;
+    list-style: none;
+  }
+  nav a {
+    font-weight: 600;
+    color: var(--azul);
+    transition: color 0.2s;
+    font-size: 0.95rem;
+  }
+  nav a:hover {
+    color: var(--rojo);
+  }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--azul-claro);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--azul);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover {
+    background: var(--azul);
+    color: var(--crema);
+    border-color: var(--azul);
+  }
+  .theme-toggle svg { width: 16px; height: 16px; }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--azul);
+    cursor: pointer;
+  }
+  @media (max-width: 860px) {
+    nav ul {
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    nav.abierto ul {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-card);
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+      box-shadow: var(--sombra);
+    }
+    .logo-text small {
+      font-size: 0.65rem;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById('menuToggle')?.addEventListener('click', () => {
+    document.getElementById('navMenu')?.classList.toggle('abierto');
+  });
+</script>

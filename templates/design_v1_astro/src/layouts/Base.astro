@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import { SITE, WHATSAPP, EMAIL, SOCIAL, MAPS_URL } from '../config';
+const ogImage = `${SITE.url}/img/kazoku.jpg`;
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+<!DOCTYPE html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{SITE.title}</title>
+    <meta name="description" content={SITE.description} />
+    <meta name="theme-color" content="#E63946" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={SITE.url} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/kazoku.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="/img/kazoku.jpg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={SITE.title} />
+    <meta property="og:description" content={SITE.description} />
+    <meta property="og:url" content={SITE.url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={SITE.locale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={SITE.title} />
+    <meta name="twitter:description" content={SITE.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+    <link rel="preconnect" href="https://www.youtube.com" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "Dojo Kazoku",
+      description: SITE.description,
+      url: SITE.url,
+      image: ogImage,
+      telephone: `+${WHATSAPP.primary}`,
+      email: EMAIL,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Lota 7916",
+        addressLocality: "La Granja",
+        addressRegion: "Santiago",
+        addressCountry: "CL",
+      },
+      sameAs: [SOCIAL.instagram1, SOCIAL.instagram2, SOCIAL.facebook, MAPS_URL],
+      openingHoursSpecification: [
+        { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "19:00", closes: "20:00" },
+        { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "19:00", closes: "20:00" },
+        { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "19:00", closes: "20:00" },
+      ],
+    })} />
+    {gaId && <>
+      <script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+      <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}></script>
+    </>}
+    <slot name="head" />
+    <script is:inline>
+      (function(){var t=localStorage.getItem('tema');if(t==='oscuro')document.documentElement.setAttribute('data-tema','oscuro');window.toggleTema=function(){var c=document.documentElement.getAttribute('data-tema');if(c==='oscuro'){document.documentElement.removeAttribute('data-tema');localStorage.setItem('tema','claro');}else{document.documentElement.setAttribute('data-tema','oscuro');localStorage.setItem('tema','oscuro');}}})();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <main id="main-content">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 1000;
+    padding: 0.75rem 1.5rem;
+    background: var(--rojo);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.15s;
+  }
+  .skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--amarillo);
+    outline-offset: 2px;
+  }
+</style>

@@ -1,0 +1,314 @@
+---
+
+const THUMBS = {
+  instalaciones: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80',
+  clases: 'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80',
+  implementos: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80',
+  torneos: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80',
+  celebraciones: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80',
+  seminarios: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80',
+};
+const IMGS = {
+  instalaciones: [
+    'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80',
+    'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80',
+    'https://images.unsplash.com/photo-1599058918144-1ffabb6ab3a0?w=1200&q=80',
+  ],
+  clases: [
+    'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80',
+    'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80',
+    'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80',
+  ],
+  implementos: [
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80',
+    'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80',
+    'https://images.unsplash.com/photo-1599058918144-1ffabb6ab3a0?w=1200&q=80',
+    'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80',
+  ],
+  torneos: [
+    'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80',
+    'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80',
+    'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80',
+  ],
+  celebraciones: [
+    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80',
+    'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80',
+    'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&q=80',
+    'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=1200&q=80',
+  ],
+  seminarios: [
+    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80',
+    'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&q=80',
+    'https://images.unsplash.com/photo-1559223607-a43c990c692c?w=1200&q=80',
+    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80',
+  ],
+};
+
+const GALLERY = [
+  { cat:'Instalaciones', tipo:'instalaciones', title:'Nuestras Instalaciones', desc:'Contamos con un espacio amplio, limpio y equipado para la práctica de Karate Do y Pilates. Un ambiente seguro y profesional para toda la familia.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+  { cat:'Clases', tipo:'clases', title:'Clases de Karate Do y Pilates', desc:'Grupos reducidos con atención personalizada. Trabajamos técnica, condición física y valores en cada sesión.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+  { cat:'Implementos', tipo:'implementos', title:'Implementos de Entrenamiento', desc:'Balones, bosu, bandas elásticas, paletas y más. Equipamiento variado para entrenamientos dinámicos y funcionales.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+  { cat:'Torneos KSK', tipo:'torneos', title:'Torneos KSK', desc:'Participamos en torneos organizados por la comunidad KSK, donde nuestros alumnos ponen a prueba su técnica y espíritu deportivo.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+  { cat:'Celebraciones', tipo:'celebraciones', title:'Celebraciones y Eventos', desc:'Exámenes de cinturón, cumpleaños, convivencias y celebraciones que fortalecen el espíritu de familia Kazoku.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+  { cat:'Seminarios', tipo:'seminarios', title:'Seminarios y Clínicas', desc:'Capacitaciones especiales con instructores invitados, clínicas técnicas y seminarios de crecimiento personal para todos los niveles.',   video:'https://www.youtube.com/embed/tMdtxUge06s' },
+];
+
+const galleryJson = JSON.stringify(GALLERY);
+const thumbsJson = JSON.stringify(THUMBS);
+const imgsJson = JSON.stringify(IMGS);
+---
+
+<section id="galeria" class="galeria">
+  <div class="container">
+    <h2 class="title">Nuestra <span>Galería</span></h2>
+    <p class="subtitle">
+      Instalaciones, clases, implementos y más — conocé nuestro dojo
+    </p>
+    <div class="filtros">
+      <button class="filtro activo" data-tipo="todo">Todo</button>
+      <button class="filtro" data-tipo="instalaciones">Instalaciones</button>
+      <button class="filtro" data-tipo="clases">Clases</button>
+      <button class="filtro" data-tipo="implementos">Implementos</button>
+      <button class="filtro" data-tipo="torneos">Torneos KSK</button>
+      <button class="filtro" data-tipo="celebraciones">Celebraciones</button>
+      <button class="filtro" data-tipo="seminarios">Seminarios</button>
+    </div>
+    <div class="grid-gal">
+      {
+        GALLERY.map((item, i) => (
+          <div
+            class="gal-item"
+            data-tipo={item.tipo}
+            data-index={i}
+            style={{
+              backgroundImage: `url(${THUMBS[item.tipo]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <span class="gal-label">{item.cat}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="galeriaModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-slider">
+        <div class="modal-slide-container" id="slideContainer"></div>
+        <button class="slide-btn slide-prev" id="slidePrev">&#10094;</button>
+        <button class="slide-btn slide-next" id="slideNext">&#10095;</button>
+      </div>
+      <div class="modal-dots" id="modalDots"></div>
+      <div class="modal-body">
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ galleryJson, thumbsJson, imgsJson }}>
+  const GALLERY = JSON.parse(galleryJson);
+  const THUMBS = JSON.parse(thumbsJson);
+  const IMGS = JSON.parse(imgsJson);
+
+  const filtros = document.querySelectorAll('.filtro');
+  const items = document.querySelectorAll('.gal-item');
+  const modal = document.getElementById('galeriaModal');
+  const modalClose = document.getElementById('modalClose');
+  const slideContainer = document.getElementById('slideContainer');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalDots = document.getElementById('modalDots');
+  const slidePrev = document.getElementById('slidePrev');
+  const slideNext = document.getElementById('slideNext');
+
+  let currentIndex = 0;
+  let currentSlides = [];
+  let hasVideo = false;
+
+  filtros.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filtros.forEach((b) => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      const tipo = btn.dataset.tipo;
+      items.forEach((item) => {
+        item.style.display =
+          tipo === 'todo' || item.dataset.tipo === tipo ? '' : 'none';
+      });
+    });
+  });
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const data = GALLERY[parseInt(item.dataset.index)];
+      if (!data) return;
+      currentSlides = IMGS[data.tipo] || [];
+      hasVideo = !!data.video;
+      currentIndex = 0;
+      renderSlide(data);
+      modal.classList.add('abierto');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+  };
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  slidePrev.addEventListener('click', () => {
+    if (!currentSlides.length) return;
+    const total = currentSlides.length + (hasVideo ? 1 : 0);
+    currentIndex = (currentIndex - 1 + total) % total;
+    updateSlide();
+  });
+  slideNext.addEventListener('click', () => {
+    if (!currentSlides.length) return;
+    const total = currentSlides.length + (hasVideo ? 1 : 0);
+    currentIndex = (currentIndex + 1) % total;
+    updateSlide();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('abierto')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') slidePrev.click();
+    if (e.key === 'ArrowRight') slideNext.click();
+  });
+
+  function renderSlide(data) {
+    slideContainer.innerHTML = '';
+    if (data.video) {
+      const wrap = document.createElement('div');
+      wrap.className = 'modal-slide modal-slide-video';
+      const iframe = document.createElement('iframe');
+      iframe.src = data.video + '?autoplay=0&rel=0';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      wrap.appendChild(iframe);
+      slideContainer.appendChild(wrap);
+    }
+    const imgs = IMGS[data.tipo] || [];
+    imgs.forEach((url) => {
+      const div = document.createElement('div');
+      div.className = 'modal-slide';
+      div.style.width = '100%';
+      div.style.height = '100%';
+      div.style.background = 'url(' + url + ') center/cover';
+      slideContainer.appendChild(div);
+    });
+    modalTitle.textContent = data.title;
+    modalDesc.textContent = data.desc;
+    const total = imgs.length + (data.video ? 1 : 0);
+    renderDots(total);
+    updateSlide();
+  }
+
+  function renderDots(count) {
+    modalDots.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'modal-dot';
+      dot.addEventListener('click', () => { currentIndex = i; updateSlide(); });
+      modalDots.appendChild(dot);
+    }
+  }
+
+  function updateSlide() {
+    slideContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+    document.querySelectorAll('.modal-dot').forEach((d, i) => {
+      d.classList.toggle('activo', i === currentIndex);
+    });
+  }
+</script>
+
+<style>
+  .galeria { background: var(--bg-card); }
+  .filtros { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .filtro {
+    padding: 0.5rem 1.2rem; border-radius: 999px; border: 2px solid var(--azul);
+    background: transparent; color: var(--azul); font-weight: 600; cursor: pointer;
+    transition: all 0.2s; font-family: inherit; font-size: 0.9rem;
+  }
+  .filtro:hover, .filtro.activo { background: var(--azul); color: #fff; }
+  .grid-gal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .gal-item {
+    aspect-ratio: 1;
+    border-radius: var(--radio);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+  }
+  .gal-item:hover { transform: scale(1.04); box-shadow: var(--sombra); }
+  .gal-item::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  }
+  .gal-label { position: absolute; bottom: 0.8rem; left: 1rem; color: #fff; font-weight: 700; font-size: 0.9rem; z-index: 1; }
+
+  :global(.modal-slide-video) { position: relative; background: #000; width: 100%; height: 100%; }
+  :global(.modal-slide-video iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  @media (max-width: 860px) {
+    .grid-gal { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  }
+  @media (max-width: 540px) {
+    .grid-gal { grid-template-columns: 1fr; }
+  }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .modal-overlay.abierto { display: flex; }
+  .modal-content {
+    background: #fff; border-radius: var(--radio); max-width: 720px; width: 100%;
+    max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute; top: 0.6rem; right: 1rem; background: none; border: none;
+    font-size: 2.2rem; color: var(--tinta); cursor: pointer; z-index: 10;
+    line-height: 1; opacity: 0.7; transition: opacity 0.2s;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-slider { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; border-radius: var(--radio) var(--radio) 0 0; }
+  .modal-slide-container { display: flex; width: 100%; height: 100%; transition: transform 0.4s ease; }
+  :global(.modal-slide) { flex: 0 0 100%; height: 100%; }
+  .slide-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.4); color: #fff; border: none; width: 40px; height: 40px;
+    border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 5;
+    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .slide-btn:hover { background: rgba(0,0,0,0.7); }
+  .slide-prev { left: 0.8rem; }
+  .slide-next { right: 0.8rem; }
+  .modal-dots { display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem 0 0; }
+  :global(.modal-dot) { width: 10px; height: 10px; border-radius: 50%; background: var(--gris); border: none; cursor: pointer; opacity: 0.4; transition: background 0.2s; }
+  :global(.modal-dot.activo) { background: var(--rojo); opacity: 1; }
+  .modal-body { padding: 1.5rem 2rem 2rem; }
+  .modal-title { color: var(--azul); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .modal-desc { color: var(--gris); font-size: 0.95rem; line-height: 1.7; }
+  @media (max-width: 540px) { .modal-body { padding: 1.2rem; } }
+</style>
