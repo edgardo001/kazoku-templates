@@ -1,5 +1,5 @@
 :root {
-  --rojo: #E63946;
+  --rojo: #C01E2B;
   --rojo-osc: #B5202C;
   --amarillo: #FFD23F;
   --azul: #1D3557;
@@ -14,7 +14,7 @@
 }
 
 [data-tema="oscuro"] {
-  --rojo: #E63946;
+  --rojo: #C01E2B;
   --rojo-osc: #B5202C;
   --amarillo: #FFD23F;
   --azul: #A8DADC;
