@@ -150,11 +150,11 @@ const instructorsJson = JSON.stringify(INSTRUCTORS);
 
   const openModal = (modal) => {
     modal.classList.add('abierto');
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   };
   const closeModal = (modal) => {
     modal.classList.remove('abierto');
-    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   };
 
   photoClose.addEventListener('click', () => closeModal(photoModal));
@@ -307,7 +307,7 @@ const instructorsJson = JSON.stringify(INSTRUCTORS);
 
   @media (max-width: 540px) {
     .inst-card-center { max-width: 100%; }
-    .inst-modal { padding: 0.5rem; align-items: flex-start; padding-top: 2rem; }
+    .inst-modal { padding: 0.75rem; }
     .inst-modal-content { max-height: 85vh; }
     .inst-modal-info { padding: 1rem 1.2rem 1.5rem; }
     .inst-modal-info p { font-size: 0.88rem; }

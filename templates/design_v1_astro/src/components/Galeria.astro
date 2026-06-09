@@ -154,13 +154,13 @@ const imgsJson = JSON.stringify(IMGS);
       currentIndex = 0;
       renderSlide(data);
       modal.classList.add('abierto');
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     });
   });
 
   const closeModal = () => {
     modal.classList.remove('abierto');
-    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   };
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
@@ -310,5 +310,8 @@ const imgsJson = JSON.stringify(IMGS);
   .modal-body { padding: 1.5rem 2rem 2rem; }
   .modal-title { color: var(--azul); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
   .modal-desc { color: var(--gris); font-size: 0.95rem; line-height: 1.7; }
-  @media (max-width: 540px) { .modal-body { padding: 1.2rem; } }
+  @media (max-width: 540px) {
+    .modal-overlay { padding: 0.75rem; }
+    .modal-body { padding: 1.2rem; }
+  }
 </style>
